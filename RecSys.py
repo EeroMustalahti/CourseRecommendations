@@ -43,3 +43,5 @@ for study_module in study_modules:
     print(study_module)
 print(teaching_language)
 print(teacher)
+
+print("Test compelted!")
