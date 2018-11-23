@@ -5,6 +5,8 @@ from Scraper import Scraper
 from Extractor import Extractor
 from Recommender import Recommender
 
+# Ota kurssimoduuleissa huomioon mihin tiedekuntaan kuuluu (esim. faculty of natural sciences)
+# suosi kursseja jotka kuuluu oman tiedekunnan moduuleihin
 
 def main():
     # Procedure to make course recommendations using content-based filtering
@@ -23,6 +25,7 @@ def main():
     # Scrape student's NettiOpsu study record page to get HTML markup
 
     # Extract course IDs from HTML markup and make data structure containing ID's of passed courses
+
 
     # Make data structure containing study modules and what courses belong to them
 

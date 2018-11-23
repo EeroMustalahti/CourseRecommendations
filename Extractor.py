@@ -22,5 +22,23 @@ class Extractor:
         courses_data = {}
         with open(self.course_htmls_file) as f:
             courses_htmls = json.load(f)
+
         for key, value in courses_htmls.items():
-            print(key)
+            courses_htmls[key] = BeautifulSoup(value, 'html.parser')
+
+        # Start to extract data of each course
+        for key, course_html in courses_htmls.items():
+            study_modules = []
+            h2_elem = course_html.find('h2', text='Belongs to following study modules')
+            div_elem = h2_elem.find_next_sibling('div')
+            for link in div_elem('a'):
+                study_modules.append(link.string)
+            courses_data[key] = study_modules
+
+        # Check if worked
+        for key, value in courses_data.items():
+            print(key + ':')
+            for item in value:
+                print('   ' + item)
+
+        return courses_data
