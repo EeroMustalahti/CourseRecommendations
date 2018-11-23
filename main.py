@@ -25,11 +25,10 @@ def main():
     # Scrape student's NettiOpsu study record page to get HTML markup
 
     # Extract course IDs from HTML markup and make data structure containing ID's of passed courses
+    passed_courses = ['TIEP1']
 
-
-    # Make data structure containing study modules and what courses belong to them
-
-    # Make data structure containing info of what
+    # Recommend courses to student
+    recommender.recommend(passed_courses, courses_data)
 
 
 if __name__ == "__main__":
