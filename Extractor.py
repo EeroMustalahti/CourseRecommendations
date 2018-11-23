@@ -36,9 +36,9 @@ class Extractor:
             courses_data[key] = study_modules
 
         # Check if worked
-        for key, value in courses_data.items():
-            print(key + ':')
-            for item in value:
-                print('   ' + item)
+        #for key, value in courses_data.items():
+        #    print(key + ':')
+        #    for item in value:
+        #        print('   ' + item)
 
         return courses_data
