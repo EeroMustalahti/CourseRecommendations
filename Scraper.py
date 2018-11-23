@@ -64,17 +64,16 @@ class Scraper:
                 # Käytetään avaimena kurssin koodia ja arvona kurssin HTML:ää
                 div_elem = course_html.find("div", {"class": "department_header"})
                 course_code = div_elem.text.split()[0].strip()
-                course_htmls[course_code] = course_html
+                course_htmls[course_code] = str(course_html)
 
         # Tarkistetaan suoritukseen mennyt aika
         end_time = time.time()
         print('Time to fetch courses\' htmls: ' + str(end_time - start_time))
         print('Number of courses: ' + str(len(course_htmls)))
-        for key, value in course_htmls.items():
-            print(key)
+
         # Save course htmls as json
-        #with open(self.course_htmls_file, 'w') as f:
-        #    json.dump(course_htmls, f)
+        with open(self.course_htmls_file, 'w') as f:
+            json.dump(course_htmls, f)
 
         return course_htmls
 

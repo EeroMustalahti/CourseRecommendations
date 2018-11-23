@@ -14,11 +14,11 @@ def main():
     recommender = Recommender()
 
     # Scrape UTA website to get HTML markup of course pages
-    courses_htmls = scraper.get_courses_html()
+    if sys.argv[1] == 'get':
+        courses_htmls = scraper.get_courses_html()
 
-    #with open('CourseHtmls.json') as f:
-    #    a = json.load(f)
     # Extract attributes from each course's HTML markup and make data structure containing course infos
+    courses_data = extractor.get_courses_data()
 
     # Scrape student's NettiOpsu study record page to get HTML markup
 
