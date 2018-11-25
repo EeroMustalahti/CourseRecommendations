@@ -1,35 +1,34 @@
 import sys
-import json
 
 from Scraper import Scraper
-from Extractor import Extractor
 from Recommender import Recommender
-
-# Ota kurssimoduuleissa huomioon mihin tiedekuntaan kuuluu (esim. faculty of natural sciences)
-# suosi kursseja jotka kuuluu oman tiedekunnan moduuleihin
 
 
 def main():
     # Procedure to make course recommendations using content-based filtering
 
-    scraper = Scraper()
-    extractor = Extractor()
-    recommender = Recommender()
+    # Commands to configure behaviour
+    scrape_uta = sys.argv[1]  # Scrape website for courses and modules (y = yes, s = only Computer Science Program)
+    scrape_student = sys.argv[2]
+    recommend = sys.argv[3]  # Execute recommendation (y = yes, f = use fake student data)
+    save_recommend = sys.argv[4]  # Save recommendations to file (y = yes)
 
-    # Scrape UTA website to get HTML markup of course pages
-    if sys.argv[1] == 'get':
-        courses_htmls = scraper.get_courses_html()
+    if scrape_uta == 'y':
+        Scraper().scrape()
+    elif scrape_uta == 's':
+        Scraper().small_scrape()
 
     # Extract attributes from each course's HTML markup and make data structure containing course infos
-    courses_data = extractor.get_courses_data()
 
     # Scrape student's NettiOpsu study record page to get HTML markup
+    if scrape_student == 'y':
+        Scraper().scrape_student()
 
     # Extract course IDs from HTML markup and make data structure containing ID's of passed courses
-    passed_courses = ['TIEP3']
 
     # Recommend courses to student
-    recommender.recommend(passed_courses, courses_data)
+    if recommend == 'y':
+        Recommender().recommend(recommend, save_recommend)
 
 
 if __name__ == "__main__":

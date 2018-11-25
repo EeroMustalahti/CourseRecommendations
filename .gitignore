@@ -1,3 +1,6 @@
 .idea
-CourseHtmls.json
 __pycache__/
+
+CourseHtmls.json
+courses.json
+study_modules.json

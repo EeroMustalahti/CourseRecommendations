@@ -5,20 +5,20 @@ import json
 from bs4 import BeautifulSoup
 import requests
 
+from Reporter import Reporter
+
 
 class Recommender:
 
-    uta_curricula_url = 'https://www10.uta.fi/opas/index.htm?uiLang=en'
-    # Kokeillaan ensin vain tietojenkäsittelytieteiden tutkinto-ohjelman kursseja
-    scrape_url = 'https://www10.uta.fi/opas/koulutus.htm?opsId=162&uiLang=en&lang=en&lvv=2018&koulid=403'
-    url_prefix = 'https://www10.uta.fi/opas/'
-    course_htmls_file = 'CourseHtmls.json'
-
     def __init__(self):
-        """"""
+        pass
 
-    def recommend(self, passed_courses, courses_data):
-        """Recommends courses."""
+    def recommend(self, rec_param, save_recommend):
+        """Recommends set of courses to student."""
+        pass
+
+    def recommendd(self, passed_courses, courses_data):
+        """TO BE REMOVED"""
         courses_score = {}
         for passed_course in passed_courses:
             passed_course_data = courses_data[passed_course]
