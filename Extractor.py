@@ -16,7 +16,7 @@ class Extractor:
         pass
 
     def get_faculties(self, curricula_content):
-        curricula_soup = BeautifulSoup(curricula_content, self.parser)
+        curricula_soup = self.get_soup(curricula_content)
 
         faculties = {}
         faculty_divs = curricula_soup.find_all('div', {'class': 'frontpage_unit_content'})
@@ -30,17 +30,37 @@ class Extractor:
 
         return faculties
 
+    def get_education_structure(self, page_content):
+        page_soup = self.get_soup(page_content)
+        education_structure = page_soup.find('div', {'class': 'koulutus_rakenne'})
+        return education_structure
+
+    def get_programme_info(self, programme_content):
+        programme_soup = self.get_soup(programme_content)
+        programme_name = programme_soup.find('h3').text.strip()
+        module_divs = programme_soup.select('div[class*="tutrak_okokonaisuus"]')  # 'div[class*="listing-col-"]'
+
+        return programme_name, module_divs
+
+    def get_module_data(self, module_div):
+        name = module_div.find('a').text.strip()
+        sys.exit(name)
+        return 'id', 'name', 0, [], 'parent', []
+
+    def get_course_data(self, course_content):
+        return 'id', 'name', 0, []
+
     @staticmethod
-    def get_links_of_faculty(faculty_div):
+    def get_links(element):
         links = []
-        for anchor in faculty_div.find_all('a'):
+        for anchor in element.find_all('a'):
             links.append(anchor.get('href'))
         return links
 
-    def get_education_structure(self, page_content):
-        page_soup = BeautifulSoup(page_content, self.parser)
-        education_structure = page_soup.find('div', {'class': 'koulutus_rakenne'})
-        return education_structure
+    # Utility methods
+
+    def get_soup(self, page_content):
+        return BeautifulSoup(page_content, self.parser)
 
     def get_courses_data(self):
         """TO BE REMOVED"""
