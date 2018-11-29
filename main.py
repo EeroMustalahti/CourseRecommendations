@@ -8,27 +8,28 @@ def main():
     # Procedure to make course recommendations using content-based filtering
 
     # Commands to configure behaviour
-    scrape_uta = sys.argv[1]  # Scrape website for courses and modules (y = yes, s = only Computer Science Program)
-    scrape_student = sys.argv[2]
-    recommend = sys.argv[3]  # Execute recommendation (y = yes, f = use fake student data)
-    save_recommend = sys.argv[4]  # Save recommendations to file (y = yes)
+    scrape_uta = sys.argv[1]  # Scrape website for courses and modules (y = yes)
+    scrape_student = sys.argv[2]  # Scrape students personal study record (y = yes, f = use fake student data)
+    execute_recommendation = sys.argv[3]  # Make recommendations (y = yes)
+
+    web_scraper = Scraper()
+    course_recommender = Recommender()
 
     if scrape_uta == 'y':
-        Scraper().scrape()
-    elif scrape_uta == 's':
-        Scraper().small_scrape()
+        # Scrape UTA courses and study modules data
+        web_scraper.scrape()
 
-    # Extract attributes from each course's HTML markup and make data structure containing course infos
-
-    # Scrape student's NettiOpsu study record page to get HTML markup
+    student_completed_courses = []
     if scrape_student == 'y':
-        Scraper().scrape_student()
-
-    # Extract course IDs from HTML markup and make data structure containing ID's of passed courses
+        # Scrape UTA student's personal study record to obtain completed courses
+        student_completed_courses = Scraper().scrape_student()
+    elif scrape_student == 'f':
+        # Make recommendations to a fake student with predetermined completed courses
+        student_completed_courses = course_recommender.get_fake_student_completed_courses()
 
     # Recommend courses to student
-    if recommend == 'y':
-        Recommender().recommend(recommend, save_recommend)
+    if execute_recommendation == 'y':
+        course_recommender.recommend(student_completed_courses)
 
 
 if __name__ == "__main__":

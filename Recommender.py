@@ -5,17 +5,31 @@ import json
 from bs4 import BeautifulSoup
 import requests
 
+from Preserver import Preserver
 from Reporter import Reporter
 
 
 class Recommender:
 
+    preserver = Preserver()
+    reporter = Reporter()
+
     def __init__(self):
         pass
 
-    def recommend(self, rec_param, save_recommend):
+    def recommend(self, student_completed_courses):
         """Recommends set of courses to student."""
+        courses_data = self.preserver.load_courses()
+        modules_data = self.preserver.load_modules()
         pass
+
+    def get_fake_student_completed_courses(self):
+        """Returns array of courses completed by fake student."""
+        return []
+
+    # Checking for file existence
+    #import os.path
+    #os.path.isfile(fname)
 
     def recommendd(self, passed_courses, courses_data):
         """TO BE REMOVED"""

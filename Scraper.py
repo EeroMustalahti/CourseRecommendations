@@ -1,5 +1,6 @@
 import sys
 import time
+import datetime
 import json
 
 from bs4 import BeautifulSoup
@@ -14,18 +15,13 @@ class Scraper:
 
     uta_curricula_url = 'https://www10.uta.fi/opas/index.htm?uiLang=en'
 
-    scrape_url = 'https://www10.uta.fi/opas/koulutus.htm?opsId=162&uiLang=en&lang=en&lvv=2018&koulid=403'
-    small_scrape_url = 'https://www10.uta.fi/opas/koulutus.htm?opsId=162&uiLang=en&lang=en&lvv=2018&koulid=403'
-
-    url_prefix = 'https://www10.uta.fi/opas/'
     uta_url_prefix = 'https://www10.uta.fi/opas/'
-
-    course_htmls_file = 'CourseHtmls.json'
-    courses_file = 'courses.json'
-    modules_file = 'modules.json'
 
     student_login = 'https://www10.uta.fi/nettiopsu/login.htm'
     student_academic_transcript = 'https://www10.uta.fi/nettiopsu/suoritukset.htm'
+
+    courses_collected = 0
+    modules_collected = 0
 
     extractor = Extractor()
     preserver = Preserver()
@@ -39,12 +35,31 @@ class Scraper:
     def scrape(self):
         """Scrapes UTA Curricula Guides for course and study module information."""
 
+        uta_courses_data = {'dataset_info': {'collected_on': '', 'collected_in': '', 'data_items': 0}}
+        uta_modules_data = {'dataset_info': {'collected_on': '', 'collected_in': '', 'data_items': 0}}
+
         self.scrape_start_time = time.time()
         courses_data, modules_data = self.traverse_curricula()
+        data_collected_in = self.get_passed_time()
         self.reporter.uta_scrape_time_span(self.get_passed_time())
 
-        self.preserver.save_courses(courses_data)
-        self.preserver.save_modules(modules_data)
+        date_collected_on = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        uta_courses_data['dataset_info']['collected_on'] = date_collected_on
+        uta_courses_data['dataset_info']['collected_in'] = self.reporter.display_hours_and_minutes(data_collected_in)
+        uta_courses_data['dataset_info']['data_items'] = self.courses_collected
+
+        uta_modules_data['dataset_info']['collected_on'] = date_collected_on
+        uta_modules_data['dataset_info']['collected_in'] = self.reporter.display_hours_and_minutes(data_collected_in)
+        uta_modules_data['dataset_info']['data_items'] = self.modules_collected
+
+        print('courses_data len: ' + str(len(courses_data)))
+        print('modules_data len: ' + str(len(modules_data)))
+
+        uta_courses_data.update(courses_data)
+        uta_modules_data.update(modules_data)
+
+        self.preserver.save_courses(uta_courses_data)
+        self.preserver.save_modules(uta_modules_data)
 
     def traverse_curricula(self):
         curricula_content = self.get_html(self.uta_curricula_url)
@@ -68,6 +83,8 @@ class Scraper:
             courses_data.update(faculty_courses_data)
             modules_data.update(faculty_modules_data)
 
+            break  # TESTI VAIN YKSI FACULTY
+
         return courses_data, modules_data
 
     def traverse_faculty_links(self, links):
@@ -89,6 +106,8 @@ class Scraper:
             faculty_courses_data.update(collected_courses_data)
             faculty_modules_data.update(collected_modules_data)
 
+            break  # TESTI VAIN YKSI LINKKI
+
         return faculty_courses_data, faculty_modules_data
 
     def traverse_programme_collection(self, education_structure):
@@ -102,6 +121,8 @@ class Scraper:
             programme_courses_data, programme_modules_data = self.traverse_programme(programme_content)
             collected_courses_data.update(programme_courses_data)
             collected_modules_data.update(programme_modules_data)
+
+            break  # TESTI VAIN YKSI PROGRAMME
 
         return collected_courses_data, collected_modules_data
 
@@ -126,32 +147,21 @@ class Scraper:
 
         return programme_courses_data, programme_modules_data
 
-    """
-    def traverse_modules(self, module_links):
-        programme_courses_data = {}
-        programme_modules_data = {}
-        for module_link in module_links:
-            module_content = self.get_html(module_link)
-            module_courses_data, module_data = self.collect_module_data(module_content)
-            programme_courses_data.update(module_courses_data)
-            programme_modules_data.update(module_data)
-
-        return programme_courses_data, programme_modules_data
-    """
-
     def collect_module_data(self, module_div):
-        module_id, module_name, module_ects, module_course_ids, parent_module, course_links\
+        module_id, module_name, module_ects, module_course_ids, parent_module_id, course_links\
             = self.extractor.get_module_data(module_div)
         module_data = {
             module_id: {
                 'name': module_name,
                 'ects': module_ects,
                 'courses': module_course_ids,
-                'parent': parent_module
+                'parent': parent_module_id
             }
         }
-        self.reporter.module_data_collected(module_name)
+        self.reporter.module_data_collected(module_data, module_id)
+        self.modules_collected += 1
 
+        course_links = self.add_uta_url_prefixes(course_links)
         module_courses_data = self.traverse_courses(course_links)
 
         return module_courses_data, module_data
@@ -162,8 +172,6 @@ class Scraper:
             course_content = self.get_html(course_link)
             module_course_data = self.collect_course_data(course_content)
             module_courses_data.update(module_course_data)
-
-            sys.exit(module_courses_data)
 
         return module_courses_data
 
@@ -177,18 +185,15 @@ class Scraper:
                 'belongs_to_modules': course_belongs_to_modules
             }
         }
-        self.reporter.course_data_collected(course_id, course_name)
+        self.reporter.course_data_collected(course_data, course_id)
+        self.courses_collected += 1
         return course_data
 
-    def small_scrape(self):
-        """Scrapes only Degree Programme in Computer Sciences for course and study module information.."""
-        pass
-
-    # Methods relating to web scraping Univerisy of Tampere student's completed courses
+    # Methods relating to web scraping University of Tampere student's completed courses
 
     def scrape_student(self):
         """Scrapes student's personal academic transcript to obtain information on completed courses."""
-        pass
+        return []
 
     # Utility methods
 
@@ -208,63 +213,3 @@ class Scraper:
         It is not possible to make requests to relative links,
         therefore this transformation is necessary to make requests to these links."""
         return [self.uta_url_prefix + s for s in links]
-
-    def get_courses_html(self):
-        """TO BE REMOVED"""
-        course_htmls = {}
-
-        r = requests.get(self.scrape_url)
-        data = r.text
-        html = BeautifulSoup(data, 'html.parser')
-        # Ota linkit jotka johtaa tutkintoihin
-        education_structure = html.find('div', {'class': 'koulutus_rakenne'})
-        programmes = education_structure.findChildren('a')
-        programme_urls = []
-
-        # Lasketaan kuinka paljon aikaa menee kurssien HTML:ien hakemiseen
-        start_time = time.time()
-
-        programme_counter = 1
-        for a in programmes:
-            programme_urls.append(a.get('href'))
-        for programme_url in programme_urls:
-            print('Programme ' + str(programme_counter))
-            programme_counter += 1
-
-            r = requests.get(self.url_prefix + programme_url)
-            data = r.text
-            programme_html = BeautifulSoup(data, 'html.parser')
-
-            course_divs = programme_html.find_all('div', {'class': 'tutrak_subElement_oj'})
-            course_as = []
-            for course_div in course_divs:
-                course_as.append(course_div.findChild('a'))
-            course_urls = []
-            for course_a in course_as:
-                course_urls.append(course_a.get('href'))
-
-            course_counter = 1
-            for course_url in course_urls:
-                print('course ' + str(course_counter))
-                course_counter += 1
-
-                r = requests.get(self.url_prefix + course_url)
-                data = r.text
-                course_html = BeautifulSoup(data, 'html.parser')
-                #print(course_html)
-
-                # Käytetään avaimena kurssin koodia ja arvona kurssin HTML:ää
-                div_elem = course_html.find("div", {"class": "department_header"})
-                course_code = div_elem.text.split()[0].strip()
-                course_htmls[course_code] = str(course_html)
-
-        # Tarkistetaan suoritukseen mennyt aika
-        end_time = time.time()
-        print('Time to fetch courses\' htmls: ' + str(end_time - start_time))
-        print('Number of courses: ' + str(len(course_htmls)))
-
-        # Save course htmls as json
-        with open(self.course_htmls_file, 'w') as f:
-            json.dump(course_htmls, f)
-
-        return course_htmls
