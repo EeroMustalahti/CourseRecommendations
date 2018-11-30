@@ -1,10 +1,7 @@
 import sys
-import json
 import re
 
 from bs4 import BeautifulSoup
-
-from Reporter import Reporter
 
 
 class Extractor:
@@ -22,8 +19,7 @@ class Extractor:
 
         for faculty_div in faculty_divs:
             faculty_a = faculty_div.parent.find('div', {'class': 'frontpage_header'}).find('a')
-            faculty_name_stripped = faculty_a.text.strip()
-            faculty_name = ' '.join(faculty_name_stripped.split())  # Shorten huge gap between name and year span
+            faculty_name = faculty_a.text.rsplit(maxsplit=1)[0].strip()
 
             faculties[faculty_name] = faculty_div
 
@@ -41,7 +37,8 @@ class Extractor:
 
         return programme_name, module_divs
 
-    def get_module_data(self, module_div):
+    @staticmethod
+    def get_module_data(module_div):
         id_ = module_div['id'].split('_')[1].strip()
         name = module_div.select_one('a').text.strip()
 
@@ -71,6 +68,11 @@ class Extractor:
         course_soup = self.get_soup(course_content)
         header_div = course_soup.find('div', {'class': 'department_header'})
 
+        # Some course pages no not work, their data cannot be collected (example: KKRUTEK)
+        # Hotfix
+        if header_div is None:
+            return None, None, None, None
+
         header_strings = header_div.text.split(maxsplit=1)
         id_ = header_strings[0].strip()
 
@@ -78,12 +80,15 @@ class Extractor:
         name = header_strings[0].strip()
 
         header_strings = header_strings[1].split()
-        ects = header_strings[0].strip()
-        if '–' in ects:
-            # If course has varying ECTS amount take only note of the minimum amount
-            ects = int(ects.split('–')[0].strip())
-        else:
-            ects = int(ects)
+        ects = None
+        # Not all courses have ECTS amount (example: VENP0)
+        if header_strings:
+            ects = header_strings[0].strip()
+            if '–' in ects:
+                # If course has varying ECTS amount take only note of the minimum amount
+                ects = int(ects.split('–')[0].strip())
+            else:
+                ects = int(ects)
 
         belongs_to_modules_div = course_soup.find('h2', text='Belongs to following study modules').find_next_sibling('div')
         module_ids = []

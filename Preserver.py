@@ -1,18 +1,17 @@
 import sys
+import os
 import json
-
-from Reporter import Reporter
 
 
 class Preserver:
 
-    courses_file = 'courses.json'
-    modules_file = 'study_modules.json'
+    courses_file = 'courses_data.json'
+    modules_file = 'study_modules_data.json'
     recommendations_file = 'recommendations.json'
-    reporter = Reporter()
+    log_file = 'trace_log.txt'
 
-    def __init__(self):
-        pass
+    def __init__(self, status_reporter):
+        self.reporter = status_reporter
 
     def save_courses(self, courses_data):
         self.save(self.courses_file, courses_data)
@@ -40,6 +39,21 @@ class Preserver:
             return modules_data
         except IOError:
             sys.exit(self.reporter.no_modules_file(self.courses_file))
+
+    def delete_logfile(self):
+        try:
+            os.remove(self.log_file)
+        except OSError:
+            pass
+
+    def append_to_log_file(self, log_entry):
+        self.append(self.log_file, log_entry)
+
+    @staticmethod
+    def append(file, entry):
+        with open(file, 'a') as f:
+            f.write(entry + '\n')
+            f.close()
 
     @staticmethod
     def save(file, data):

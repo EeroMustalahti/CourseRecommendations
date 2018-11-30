@@ -1,21 +1,12 @@
 import sys
 import time
-import json
-
-from bs4 import BeautifulSoup
-import requests
-
-from Preserver import Preserver
-from Reporter import Reporter
 
 
 class Recommender:
 
-    preserver = Preserver()
-    reporter = Reporter()
-
-    def __init__(self):
-        pass
+    def __init__(self, data_preserver, status_reporter):
+        self.preserver = data_preserver
+        self.reporter = status_reporter
 
     def recommend(self, student_completed_courses):
         """Recommends set of courses to student."""
