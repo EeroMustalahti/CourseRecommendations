@@ -19,6 +19,7 @@ class Reporter:
     saved_courses = 'Courses data has been saved to file: '
     saved_modules = 'Study modules data has been saved to file: '
     saved_student = 'Student data has been saved to file: '
+    saved_recommendations = 'Recommended courses have been saved to file: '
     loaded_courses = 'Courses data has been loaded from file: '
     loaded_modules = 'Study modules data has been loaded from file: '
     loaded_student = 'Student data has been loaded from file: '
@@ -102,6 +103,9 @@ class Reporter:
 
     def student_saved(self, file_name):
         self.log(self.saved_student + file_name, self.minimum_logging)
+
+    def recommendations_saved(self, file_name):
+        self.log(self.saved_recommendations + file_name, self.minimum_logging)
 
     def courses_loaded(self, file_name):
         self.log(self.loaded_courses + file_name, self.minimum_logging)

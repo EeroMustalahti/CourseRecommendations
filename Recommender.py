@@ -9,6 +9,9 @@ class Recommender:
     student_data = {}
     student_faculty = None
 
+    # Mihgt have to be orderable like list / []?
+    recommendations = {}
+
     def __init__(self, data_preserver, status_reporter):
         self.preserver = data_preserver
         self.reporter = status_reporter
@@ -19,9 +22,6 @@ class Recommender:
         self.load_course_and_module_data()
         if real_student:
             self.load_student_data()
-
-        print(self.student_faculty)
-        print(self.student_data)
 
         pass
 
@@ -34,11 +34,11 @@ class Recommender:
         self.student_faculty = self.student_data['faculty']
         del self.student_data['faculty']
 
-    def get_fake_student_completed_courses(self):
+    def get_fake_student_completed_courses(self, fake_student_key):
         """Returns array of courses completed by fake student."""
 
-        self.student_data = {}
-        self.student_faculty = 'LUO'
+        self.student_data = {'TIEP1': {'ects': 5}}
+        self.student_faculty = 'Faculty of Natural Sciences'
 
     def recommendd(self, passed_courses, courses_data):
         """TO BE REMOVED"""

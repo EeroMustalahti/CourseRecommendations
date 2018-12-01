@@ -27,8 +27,9 @@ class Preserver:
         self.save(self.student_file, student_data)
         self.reporter.student_saved(self.student_file)
 
-    def save_recommendations(self, recommendations):
-        pass
+    def save_recommendations(self, recommendations_data):
+        self.save(self.recommendations_file, recommendations_data)
+        self.reporter.re_saved(self.recommendations_file)
 
     def load_study_record(self):
         with open(self.study_record_file) as f:
