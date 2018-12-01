@@ -69,11 +69,11 @@ class Scraper:
     def traverse_faculties(self, faculties):
         for faculty_name, faculty_div in faculties.items():
             # DEBUG
-            self.skip += 1
-            if self.skip <= 4:
-                continue
-            if self.skip >= 6:
-                return
+            #self.skip += 1
+            #if self.skip <= 4:
+            #    continue
+            #if self.skip >= 6:
+            #    return
 
             self.current_faculty = faculty_name
             self.reporter.scrape_time_passed(self.get_passed_time())

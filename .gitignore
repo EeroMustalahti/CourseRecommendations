@@ -14,7 +14,7 @@ NettiOpsu_tiedostot
 student_data.json
 
 # Files where recommendations made to a student are saved
-recommendations.json
+recommendations.txt
 
 # Log file
 trace_log.txt

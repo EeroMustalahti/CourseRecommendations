@@ -9,7 +9,7 @@ class Preserver:
     modules_file = 'study_modules_data.json'
     study_record_file = 'NettiOpsu.htm'
     student_file = 'student_data.json'
-    recommendations_file = 'recommendations.json'
+    recommendations_file = 'recommendations.txt'
     log_file = 'trace_log.txt'
 
     def __init__(self, status_reporter):
@@ -28,8 +28,26 @@ class Preserver:
         self.reporter.student_saved(self.student_file)
 
     def save_recommendations(self, recommendations_data):
-        self.save(self.recommendations_file, recommendations_data)
-        self.reporter.re_saved(self.recommendations_file)
+        with open(self.recommendations_file, 'w') as f:
+            for key, value in recommendations_data.items():
+                id_     = '                        ID : {0}'.format(key)
+                name    = '                      Name : {0}'.format(value['name'])
+                ects    = '                      ECTS : {0}'.format(value['ects'])
+                modules = '        Belongs to modules :'
+                for module_ in value['belongs_to_modules']:
+                    modules += ' {0}'.format(module_)
+                faculty = '                   Faculty : {0}'.format(value['faculty'])
+                score   = '      Recommendation score : {0}'.format(value['score'])
+                reason  = 'Reason to take this course : {0}'.format(value['reason'])
+                f.write(id_ + '\n')
+                f.write(name + '\n')
+                f.write(ects + '\n')
+                f.write(modules + '\n')
+                f.write(faculty + '\n')
+                f.write(score + '\n')
+                f.write(reason + '\n\n')
+
+        self.reporter.recommendations_saved(self.recommendations_file)
 
     def load_study_record(self):
         with open(self.study_record_file) as f:
