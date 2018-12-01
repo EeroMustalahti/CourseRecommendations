@@ -6,6 +6,13 @@ __pycache__/
 courses_data.json
 study_modules_data.json
 
+# Web page downloaded by student from their NettiOpsu website where their academic record is listed
+NettiOpsu.htm
+NettiOpsu_tiedostot
+
+# File generated to store scraped student data
+student_data.json
+
 # Files where recommendations made to a student are saved
 recommendations.json
 

@@ -13,8 +13,9 @@ class Scraper:
 
     uta_url_prefix = 'https://www10.uta.fi/opas/'
 
-    student_login = 'https://www10.uta.fi/nettiopsu/login.htm'
-    student_academic_transcript = 'https://www10.uta.fi/nettiopsu/suoritukset.htm'
+    student_login_url = 'https://sso.uta.fi/cas/login?service=https%3A%2F%2Fwww10.uta.fi%2Fnettiopsu%2Fetusivu.htm'
+    student_academic_transcript_url = 'https://www10.uta.fi/nettiopsu/suoritukset.htm'
+    student_personal_info_url = 'https://www10.uta.fi/nettiopsu/omattiedot.htm'
 
     courses_data = {}
     modules_data = {}
@@ -22,7 +23,11 @@ class Scraper:
 
     scrape_start_time = None
 
+    student_courses = {}
+
     extractor = Extractor()
+
+    skip = 0  # For debugging purposes to skip certain links (5:th faculty: Natural Science)
 
     def __init__(self, data_preserver, status_reporter):
         self.preserver = data_preserver
@@ -63,6 +68,13 @@ class Scraper:
 
     def traverse_faculties(self, faculties):
         for faculty_name, faculty_div in faculties.items():
+            # DEBUG
+            self.skip += 1
+            if self.skip <= 4:
+                continue
+            if self.skip >= 6:
+                return
+
             self.current_faculty = faculty_name
             self.reporter.scrape_time_passed(self.get_passed_time())
             self.reporter.entering_faculty(faculty_name)
@@ -71,22 +83,38 @@ class Scraper:
             faculty_links = self.add_uta_url_prefixes(faculty_links)
             self.traverse_faculty_links(faculty_links)
 
-            #break  # TESTI VAIN YKSI FACULTY
-
     def traverse_faculty_links(self, links):
         for link in links:
+
+            # DEBUG
+            #self.skip += 1
+            #if self.skip <= 100:
+            #    continue
+            #if self.skip >= 127:
+            #    return
+
             page_content = self.get_html(link)
             education_structure = self.extractor.get_education_structure(page_content)
 
             if education_structure:
                 # If the page has education structure it has collection of programmes
                 self.traverse_programme_collection(education_structure)
-            else:
-                # Else the page has information of single programme
-                self.traverse_programme(page_content)
+            #elif self.extractor.check_if_programme_page(page_content):  # Hotfix: check if programme page
+                # The page has information of single programme
+                # NOTE: seems like page could not be straight programme page?
+                #self.traverse_programme(page_content)
+            elif self.extractor.get_root_element(page_content):  # Hotfix: check if page contains one module
+                # The page presents one module. Collect first one's info in specialized way
+                self.reporter.entering_module(self.extractor.get_module_name(page_content))
+                self.collect_module_data(page_content, True)
+                # If the module has sub-modules they can be collected by using normal method
+                # NOTE: now trace behaves weirdly because it tells that we enter to "programme" (module)
+                # after collecting top module's data
+                self.traverse_programme(page_content, False)
+            # Otherwise the page should not have any module or course information
 
-            #break  # TESTI VAIN YKSI LINKKI
-
+    # NOTE: might have top section without module link. Needs to be treated like top module?
+    # Known caveat right now (example: Doctoral Programme in Literacy Studies)
     def traverse_programme_collection(self, education_structure):
         programme_links = self.extractor.get_links(education_structure)
         programme_links = self.add_uta_url_prefixes(programme_links)
@@ -95,13 +123,17 @@ class Scraper:
             programme_content = self.get_html(programme_link)
             self.traverse_programme(programme_content)
 
-            #break  # TESTI VAIN YKSI PROGRAMME
-
-    def traverse_programme(self, programme_content):
+    def traverse_programme(self, programme_content, entering_programme=True):
         """MERGE THIS METHOD TO traverse_modules?"""
         programme_name, module_divs = self.extractor.get_programme_info(programme_content)
-        self.reporter.scrape_time_passed(self.get_passed_time())
-        self.reporter.entering_programme(programme_name)
+
+        if programme_name is None:  # Hotfix: some programmes have no content
+            return
+
+        if entering_programme:
+            # Hotfix: entering programme (not landing to page where there is top module)
+            self.reporter.scrape_time_passed(self.get_passed_time())
+            self.reporter.entering_programme(programme_name)
 
         self.traverse_modules(module_divs)
 
@@ -109,9 +141,11 @@ class Scraper:
         for module_div in module_divs:
             self.collect_module_data(module_div)
 
-    def collect_module_data(self, module_div):
+    def collect_module_data(self, module_div, use_different_get=False):
         module_id, module_name, module_ects, module_course_ids, parent_module_id, course_links\
-            = self.extractor.get_module_data(module_div)
+            = self.extractor.get_module_data(module_div)\
+            if not use_different_get else self.extractor.get_module_data_differently(module_div)  # Hotfix: module-only page
+
         module_data = {
             module_id: {
                 'name': module_name,
@@ -156,9 +190,59 @@ class Scraper:
 
     # Methods relating to web scraping University of Tampere student's completed courses
 
-    def scrape_student(self):
+    def scrape_student(self, student_faculty):
         """Scrapes student's personal academic transcript to obtain information on completed courses."""
-        return []
+
+        #session = self.login_student(username, password)
+        #self.scrape_student_courses(session)
+        #self.scrape_student_faculty(session)
+
+        student_data = {'faculty': student_faculty}
+        record = self.preserver.load_study_record()
+        completed_courses = self.extractor.get_completed_courses(record)
+        student_data.update(completed_courses)
+
+        self.preserver.save_student_data(student_data)
+
+    def login_student(self, username, password):
+        """LOGIN NOT FUNCTIONAL"""
+        headers = {'User-Agent': ""}
+
+        login_page = requests.get(self.student_login_url, headers=headers).text
+        warn, lt, execution, _eventId, submit, reset = self.extractor.get_hidden_fields(login_page)
+
+        print(warn)
+        print(lt)
+        print(execution)
+        print(_eventId)
+        print(submit)
+        print(reset)
+
+        login_info = {'username': '', 'password': '',
+                      'warn': warn,
+                      'lt': lt,
+                      'execution': execution,
+                      '_eventId': _eventId,
+                      'submit': submit,
+                      'reset': reset}
+
+        session = requests.session()
+
+        # Login using your authentication information.
+        r = session.post(url=self.student_login_url, headers=headers, data=login_info)
+        print(r.status_code)
+        print(r.content)
+
+        return session
+
+    def scrape_student_courses(self, session):
+        pass
+
+    def scrape_student_faculty(self, session):
+        personal_info = session.get(self.student_personal_info_url)
+        personal_info_content = personal_info.content
+        #print(personal_info_content)
+        student_faculty = self.extractor.get_student_faculty(personal_info_content)
 
     # Utility methods
 

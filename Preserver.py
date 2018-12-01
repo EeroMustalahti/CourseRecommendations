@@ -7,6 +7,8 @@ class Preserver:
 
     courses_file = 'courses_data.json'
     modules_file = 'study_modules_data.json'
+    study_record_file = 'NettiOpsu.htm'
+    student_file = 'student_data.json'
     recommendations_file = 'recommendations.json'
     log_file = 'trace_log.txt'
 
@@ -21,8 +23,18 @@ class Preserver:
         self.save(self.modules_file, modules_data)
         self.reporter.modules_saved(self.modules_file)
 
+    def save_student_data(self, student_data):
+        self.save(self.student_file, student_data)
+        self.reporter.student_saved(self.student_file)
+
     def save_recommendations(self, recommendations):
         pass
+
+    def load_study_record(self):
+        with open(self.study_record_file) as f:
+            s = f.read()
+            f.close()
+            return s
 
     def load_courses(self):
         try:
@@ -38,7 +50,15 @@ class Preserver:
             self.reporter.modules_loaded(self.modules_file)
             return modules_data
         except IOError:
-            sys.exit(self.reporter.no_modules_file(self.courses_file))
+            sys.exit(self.reporter.no_modules_file(self.modules_file))
+
+    def load_student(self):
+        try:
+            student_data = self.load(self.student_file)
+            self.reporter.student_loaded(self.student_file)
+            return student_data
+        except IOError:
+            sys.exit(self.reporter.no_student_file(self.student_file))
 
     def delete_logfile(self):
         try:

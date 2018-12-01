@@ -4,23 +4,41 @@ import time
 
 class Recommender:
 
+    courses_data = {}
+    modules_data = {}
+    student_data = {}
+    student_faculty = None
+
     def __init__(self, data_preserver, status_reporter):
         self.preserver = data_preserver
         self.reporter = status_reporter
 
-    def recommend(self, student_completed_courses):
+    def recommend(self, real_student):
         """Recommends set of courses to student."""
-        courses_data = self.preserver.load_courses()
-        modules_data = self.preserver.load_modules()
+
+        self.load_course_and_module_data()
+        if real_student:
+            self.load_student_data()
+
+        print(self.student_faculty)
+        print(self.student_data)
+
         pass
+
+    def load_course_and_module_data(self):
+        self.courses_data = self.preserver.load_courses()
+        self.modules_data = self.preserver.load_modules()
+
+    def load_student_data(self):
+        self.student_data = self.preserver.load_student()
+        self.student_faculty = self.student_data['faculty']
+        del self.student_data['faculty']
 
     def get_fake_student_completed_courses(self):
         """Returns array of courses completed by fake student."""
-        return []
 
-    # Checking for file existence
-    #import os.path
-    #os.path.isfile(fname)
+        self.student_data = {}
+        self.student_faculty = 'LUO'
 
     def recommendd(self, passed_courses, courses_data):
         """TO BE REMOVED"""
