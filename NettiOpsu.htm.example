@@ -1,0 +1,11575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi"><head>
+	<title>NettiOpsu</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="NettiOpsu_tiedostot/main.css">
+	
+	<link rel="stylesheet" type="text/css" media="print" href="NettiOpsu_tiedostot/print.css">
+	<script type="text/javascript" src="NettiOpsu_tiedostot/jquery-1.js"></script>	
+	
+	
+	
+	
+
+
+	
+	<script type="text/javascript" src="NettiOpsu_tiedostot/jquery-ui-1.js"></script>
+	<link type="text/css" href="NettiOpsu_tiedostot/jquery-ui-1.css" rel="Stylesheet">	
+	
+	<script type="text/javascript" src="NettiOpsu_tiedostot/jquery_002.js"></script>
+	<script type="text/javascript" src="NettiOpsu_tiedostot/jquery.js"></script>
+
+	
+	
+</head>
+<body>
+<div id="layout_top">
+	<div id="layout_header">
+		
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var SESSION_TIMEOUT = 1000*3600;
+    $(function() {
+        var sessionTimeoutDialog = $('#sessionTimeoutNotificationDialog').dialog({
+            modal: true,
+            autoOpen: false,
+            buttons: {
+                'OK': function() {
+                    $(this).dialog('close');
+                }
+            }
+        });
+        setTimeout(function() {
+            sessionTimeoutDialog.dialog('open');
+        }, SESSION_TIMEOUT);
+    });
+</script>
+<div style="float:right">
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+		<a href="https://www10.uta.fi/nettiopsu/suoritukset.htm?uiLang=fi">suomeksi</a>
+	
+	
+
+	|
+	<a href="https://www10.uta.fi/nettiopsu/logout.htm">log out</a>
+</div>
+
+<!--
+
+
+<img src="/nettiopsu/images/tay_en_150px.png" alt="University of Tampere"/>
+-->
+
+<img src="NettiOpsu_tiedostot/nettiopsu-logo.png" alt="NettiOpsu">
+
+	</div>
+</div>
+
+<div id="layout_middle">
+	<div id="layout_middle_inner">
+
+		<div id="layout_content">
+			
+
+
+
+
+
+
+
+
+
+<div id="layout_content_header">
+	<div class="title">
+		Academic Transcript
+	</div>
+
+	<ul>
+		<li class="selected"><a href="https://www10.uta.fi/nettiopsu/suoritukset.htm">Academic Transcript</a></li>
+		<li><a href="https://www10.uta.fi/nettiopsu/pdfotetilaus.htm">PDF Transcript</a></li>
+	</ul>
+</div>
+<div id="layout_content_inner">
+
+	
+
+
+
+
+
+
+
+
+
+	
+	
+		<div style="margin-top:1em;font-size:10pt;width:55em;margin-bottom:0.5em">
+			<div style="float:left;padding-right:5px">
+				<img src="NettiOpsu_tiedostot/information.png" alt="(i)">
+			</div>
+			<div style="font-weight:bold;margin-left:20px;border-left:1px dotted black;padding-left:0.5em">
+				
+		
+		
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+		
+	
+	
+
+		Courses completed 01-Dec-2018 at 5:00 AM
+		<br>
+		<a href="https://www.uta.fi/opiskelunopas/en/during-your-studies/taking-studies/student-certificate-and-transcript-academic-records" target="_blank">More information about Transcript</a>
+	
+			</div>
+		</div>
+	
+
+
+	<div style="margin-bottom: 1em">
+		<h2>
+			Courses by degree program / subject
+		</h2>
+		
+		<table class="table-vertical" style="width: 100%">
+			<tbody><tr>
+				<th>Degree Program / Subject</th>
+				<th>Cu</th>
+			</tr>
+			
+			
+				
+				<tr style="background-color:#eee">
+					<td>Degree Programme in Computer Sciences</td>
+					<td style="text-align: right">168</td>
+				</tr>
+			
+				
+				<tr>
+					<td>Degree Programme in Information Studies and Interactive Media</td>
+					<td style="text-align: right">5</td>
+				</tr>
+			
+				
+				<tr style="background-color:#eee">
+					<td>Degree Programme in Mathematics and Statistics</td>
+					<td style="text-align: right">35</td>
+				</tr>
+			
+			
+			
+				
+				<tr>
+					<td>Common Core Studies</td>
+					<td style="text-align: right">2</td>
+				</tr>
+			
+				
+				<tr style="background-color:#eee">
+					<td>English</td>
+					<td style="text-align: right">6</td>
+				</tr>
+			
+				
+				<tr>
+					<td>Finnish</td>
+					<td style="text-align: right">5</td>
+				</tr>
+			
+				
+				<tr style="background-color:#eee">
+					<td>Swedish</td>
+					<td style="text-align: right">4</td>
+				</tr>
+			
+			
+			<tr>
+				<td style="border-top: 1px solid #aaa">Credit total</td>
+				<td style="border-top: 1px solid #aaa; text-align: right">225</td>
+			</tr>
+		</tbody></table>
+	</div>
+
+	<script type="text/javascript">
+	</script>
+
+	<h2>
+		All courses
+	</h2>
+	<a name="kaikki"></a>
+
+	<script type="text/javascript">
+		//         
+		$(function() {
+			$("#suortapa").buttonset();
+
+			$("#suortapa1").click(function() {
+				$("#suortapa1_content").show();
+				$("#suortapa2_content").hide();
+				$("#suortapa3_content").hide();
+			});
+			$("#suortapa2").click(function() {
+				$("#suortapa1_content").hide();
+				$("#suortapa2_content").show();
+				$("#suortapa3_content").hide();
+			});
+			$("#suortapa3").click(function() {
+				$("#suortapa1_content").hide();
+				$("#suortapa2_content").hide();
+				$("#suortapa3_content").show();
+			});
+		});
+		//
+	</script>
+
+	<div id="suortapa" class="ui-buttonset">
+		Choose format:<br>
+		<input type="radio" id="suortapa1" name="suortapa" checked="checked" class="ui-helper-hidden-accessible">
+		<label for="suortapa1" style="font-size: 9pt" class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" role="button" aria-disabled="false"><span class="ui-button-text">By completion</span></label> <input type="radio" id="suortapa2" name="suortapa" class="ui-helper-hidden-accessible"> <label for="suortapa2" style="font-size: 9pt" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">By degree program / subject</span></label> <input type="radio" id="suortapa3" name="suortapa" class="ui-helper-hidden-accessible"> <label for="suortapa3" style="font-size: 9pt" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false"><span class="ui-button-text">By studies</span></label>
+	</div>
+
+	<div id="suortapa1_content">
+		
+
+
+
+
+
+
+
+
+
+	<table class="table-vertical" style="clear:both;width:100%">
+		<tbody><tr>
+			<th>Code</th>
+			<th>Course</th>
+			<th>Cu</th>
+			<th>Type</th>
+			<th>Grade</th>
+			<th>Date</th>
+		</tr>
+		
+		<tr>
+			<td>TIETS17</td>
+			<td>
+				Requirements Engineering<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Nov-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETS02</td>
+			<td>
+				Automata I<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		28-Jun-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TUTKLUK</td>
+			<td>
+				Bachelor of Science   <br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						180
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		25-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETS39</td>
+			<td>
+				Machine Learning Algorithms<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEY1</td>
+			<td>
+				Guided Planning of Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>LUOYO002</td>
+			<td>
+				General Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIETS11</td>
+			<td>
+				Data Mining<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Mar-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETS44</td>
+			<td>
+				Big Data Entity Resolution<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Mar-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEA4</td>
+			<td>
+				Project Work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEAT</td>
+			<td>
+				INTERMEDIATE STUDIES IN COMPUTER SCIENCES<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						95
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIETS31</td>
+			<td>
+				Knowledge Discovery<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>KKENVAL4</td>
+			<td>
+				Dialogue: Constructive Talk at Work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>LUOO001</td>
+			<td>
+				Language and Communication Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						15
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>KKSUPRO</td>
+			<td>
+				Introduction to Interpersonal Communication Skills<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Oct-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEVA31</td>
+			<td>
+				Principles of Programming Graphical User Interfaces<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		30-Aug-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEA6</td>
+			<td>
+				Bachelor's Thesis<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+									
+						
+							Satunnaismetsä						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-May-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEA5</td>
+			<td>
+				Thesis Course<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-May-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETA12</td>
+			<td>
+				WWW Programming<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		21-Apr-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEA6</td>
+			<td>
+				BACHELOR'S THESIS, WRITTEN EXAM<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+									
+						
+							Kielentark. K. Pitkänen						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						0
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Apr-2017
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>MTTMP1A</td>
+			<td>
+				Introduction to Analysis<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>KKSULUK</td>
+			<td>
+				Academic Writing in Finnish<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>KKRULUKS</td>
+			<td>
+				Swedish Oral Communication<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>KKRULUKK</td>
+			<td>
+				Swedish Written Communication<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>MTTMP4</td>
+			<td>
+				Algebra 1A<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>MTTTKO</td>
+			<td>
+				Mathematical Studies for students of Computer Sciences<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						30
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>ITIY3</td>
+			<td>
+				Introduction to Web Publishing<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		07-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>MTTMP2</td>
+			<td>
+				Introduction to mathematical reasoning<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		02-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETS32</td>
+			<td>
+				XML retrieval and query languages<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-May-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIETA7</td>
+			<td>
+				Database Programming<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-May-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEA1</td>
+			<td>
+				Introduction to User Interfaces<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		04-May-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>MTTTA1</td>
+			<td>
+				Basics of statistical methods<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-May-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>SISYY003</td>
+			<td>
+				Orientation Course, Participation in classroom work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						1
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Feb-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIETA6</td>
+			<td>
+				Data Structures<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		14-Jan-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETA11</td>
+			<td>
+				Programming Technique C++<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Jan-2016
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>KKENLUK</td>
+			<td>
+				Introduction to Academic English<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						4
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Dec-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>MTTTP5</td>
+			<td>
+				Basics of Statistical Inference<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Dec-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEY2</td>
+			<td>
+				Introduction to Computer Sciences<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Nov-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>SISYY003</td>
+			<td>
+				ORIENTATION COURSE, PARTICIPATION IN COURSE WORK<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						1
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-Nov-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>MTTTP1</td>
+			<td>
+				Introduction to statistics<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		27-Oct-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>MTTMY1</td>
+			<td>
+				Basic concepts of Mathematics<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Oct-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIETA10</td>
+			<td>
+				Programming Technique C<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Aug-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIETA9</td>
+			<td>
+				Introduction to WWW Techniques<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Jun-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEA3</td>
+			<td>
+				Information Systems and Software Engineering II<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Jun-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEA2</td>
+			<td>
+				Introduction to Object-Oriented Programming<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Mar-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEY4</td>
+			<td>
+				Introduction to Computing<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEPT</td>
+			<td>
+				BASIC STUDIES IN COMPUTER SCIENCES<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						25
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEP4</td>
+			<td>
+				Information Systems and Software Engineering I<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Apr-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEP3</td>
+			<td>
+				Data Bases<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr>
+			<td>TIEP2</td>
+			<td>
+				Introduction to Interactive Technology<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Oct-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		<tr style="background-color:#eee">
+			<td>TIEP1</td>
+			<td>
+				High Level Programming<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		11-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+	</tbody></table>
+
+	</div>
+
+	<div id="suortapa2_content" style="display: none">
+		
+
+
+
+
+
+
+
+
+
+	<table class="table-vertical" style="clear:both;width:100%">
+		<tbody><tr>
+			<th>Code</th>
+			<th>Course</th>
+			<th>Cu</th>
+			<th>Type</th>
+			<th>Grade</th>
+			<th>Date</th>
+		</tr>
+		
+		
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Degree Programme in Computer Sciences
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEP1</td>
+			<td>
+				High Level Programming<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		11-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEP2</td>
+			<td>
+				Introduction to Interactive Technology<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Oct-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEP3</td>
+			<td>
+				Data Bases<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEP4</td>
+			<td>
+				Information Systems and Software Engineering I<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Apr-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA2</td>
+			<td>
+				Introduction to Object-Oriented Programming<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Mar-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEA3</td>
+			<td>
+				Information Systems and Software Engineering II<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Jun-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA9</td>
+			<td>
+				Introduction to WWW Techniques<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Jun-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEY4</td>
+			<td>
+				Introduction to Computing<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2014
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEPT</td>
+			<td>
+				BASIC STUDIES IN COMPUTER SCIENCES<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						25
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETA10</td>
+			<td>
+				Programming Technique C<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Aug-2015
+	
+
+						
+						
+							TaY, avoin - University of Tampere, Open Univ.
+									
+						
+							                                                            						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Aug-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEY2</td>
+			<td>
+				Introduction to Computer Sciences<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Nov-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETA11</td>
+			<td>
+				Programming Technique C++<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Jan-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA6</td>
+			<td>
+				Data Structures<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		14-Jan-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEA1</td>
+			<td>
+				Introduction to User Interfaces<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		04-May-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA7</td>
+			<td>
+				Database Programming<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-May-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETS32</td>
+			<td>
+				XML retrieval and query languages<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-May-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA6</td>
+			<td>
+				BACHELOR'S THESIS, WRITTEN EXAM<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+									
+						
+							Kielentark. K. Pitkänen						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						0
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Apr-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETA12</td>
+			<td>
+				WWW Programming<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		21-Apr-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA5</td>
+			<td>
+				Thesis Course<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-May-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEA6</td>
+			<td>
+				Bachelor's Thesis<br>
+				
+				
+					<span style="font-size:80%">
+						Additional information:
+				
+						
+									
+						
+							Satunnaismetsä						
+						
+					</span>
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-May-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEVA31</td>
+			<td>
+				Principles of Programming Graphical User Interfaces<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		30-Aug-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETS31</td>
+			<td>
+				Knowledge Discovery<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA4</td>
+			<td>
+				Project Work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIEAT</td>
+			<td>
+				INTERMEDIATE STUDIES IN COMPUTER SCIENCES<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						95
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS44</td>
+			<td>
+				Big Data Entity Resolution<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Mar-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETS11</td>
+			<td>
+				Data Mining<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Mar-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEY1</td>
+			<td>
+				Guided Planning of Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETS39</td>
+			<td>
+				Machine Learning Algorithms<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS02</td>
+			<td>
+				Automata I<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		28-Jun-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>TIETS17</td>
+			<td>
+				Requirements Engineering<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				S
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Nov-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Degree Programme in Information Studies and Interactive Media
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>ITIY3</td>
+			<td>
+				Introduction to Web Publishing<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		07-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Degree Programme in Mathematics and Statistics
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr>
+			<td>MTTMY1</td>
+			<td>
+				Basic concepts of Mathematics<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Oct-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTP1</td>
+			<td>
+				Introduction to statistics<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		27-Oct-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>MTTTP5</td>
+			<td>
+				Basics of Statistical Inference<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Dec-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTA1</td>
+			<td>
+				Basics of statistical methods<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				A
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-May-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>MTTMP2</td>
+			<td>
+				Introduction to mathematical reasoning<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		02-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTKO</td>
+			<td>
+				Mathematical Studies for students of Computer Sciences<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						30
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>MTTMP4</td>
+			<td>
+				Algebra 1A<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTMP1A</td>
+			<td>
+				Introduction to Analysis<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						5
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				P
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Common Core Studies
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr>
+			<td>SISYY003</td>
+			<td>
+				ORIENTATION COURSE, PARTICIPATION IN COURSE WORK<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						1
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-Nov-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>SISYY003</td>
+			<td>
+				Orientation Course, Participation in classroom work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						1
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				Y
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Feb-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Common Core Studies
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr>
+			<td>LUOO001</td>
+			<td>
+				Language and Communication Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						15
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>LUOYO002</td>
+			<td>
+				General Studies<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						10
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Degrees awarded
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr>
+			<td>TUTKLUK</td>
+			<td>
+				Bachelor of Science   <br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						180
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				O
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		25-Apr-2018
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						English
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKENLUK</td>
+			<td>
+				Introduction to Academic English<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						4
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Dec-2015
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>KKENVAL4</td>
+			<td>
+				Dialogue: Constructive Talk at Work<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Finnish
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKSULUK</td>
+			<td>
+				Academic Writing in Finnish<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						3
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>KKSUPRO</td>
+			<td>
+				Introduction to Interpersonal Communication Skills<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Oct-2017
+	
+
+			</td>
+		</tr>
+		
+		
+		
+			<tr>
+				<td colspan="6" style="border-bottom:1px solid #aaa;padding-top:0.5em">
+					<b>
+						Swedish
+					</b>
+				</td>
+			</tr>
+			
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKRULUKK</td>
+			<td>
+				Swedish Written Communication<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td>KKRULUKS</td>
+			<td>
+				Swedish Oral Communication<br>
+				
+				
+			</td>
+
+			<td style="text-align:right;white-space:nowrap">
+				
+					
+					
+						2
+					
+				
+			</td>
+
+			<td style="text-align:center">
+				K
+			</td>
+			
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align:right">
+				
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+
+			</td>
+		</tr>
+		
+	</tbody></table>
+
+	</div>
+	<div id="suortapa3_content" style="display: none">
+		
+
+
+
+
+
+
+
+
+
+<table class="table-vertical" style="clear: both; width: 100%">
+	<tbody><tr>
+		<th>Code</th>
+		<th>Course</th>
+		<th>Cu</th>
+		<th>Type</th>
+		<th>Grade</th>
+		<th>Date</th>
+	</tr>
+	
+	
+	
+		
+		
+		
+			<tr style="background-color:#eee">
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>TIEPT</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							BASIC STUDIES IN COMPUTER SCIENCES
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>25</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr>
+			<td>TIEP1</td>
+			<td>High Level Programming<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		11-Dec-2014
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEP2</td>
+			<td>Introduction to Interactive Technology<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Oct-2014
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEP3</td>
+			<td>Data Bases<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Dec-2014
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEP4</td>
+			<td>Information Systems and Software Engineering I<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Apr-2015
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr>
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>TUTKLUK</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							Bachelor of Science   
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>180</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		25-Apr-2018
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEPT</td>
+			<td>BASIC STUDIES IN COMPUTER SCIENCES<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						25
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>ITIY3</td>
+			<td>Introduction to Web Publishing<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		07-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTKO</td>
+			<td>Mathematical Studies for students of Computer Sciences<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						30
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>LUOO001</td>
+			<td>Language and Communication Studies<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						15
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEAT</td>
+			<td>INTERMEDIATE STUDIES IN COMPUTER SCIENCES<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						95
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>LUOYO002</td>
+			<td>General Studies<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr style="background-color:#eee">
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>LUOYO002</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							General Studies
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>10</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr>
+			<td>TIEY4</td>
+			<td>Introduction to Computing<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2014
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						3
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>SISYY003</td>
+			<td>ORIENTATION COURSE, PARTICIPATION IN COURSE WORK<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						1
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-Nov-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEY2</td>
+			<td>Introduction to Computer Sciences<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						3
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Nov-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>SISYY003</td>
+			<td>Orientation Course, Participation in classroom work<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						1
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Feb-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEY1</td>
+			<td>Guided Planning of Studies<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						2
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-Apr-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr style="background-color:#eee">
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>TIEAT</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							INTERMEDIATE STUDIES IN COMPUTER SCIENCES
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>95</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr>
+			<td>TIEA2</td>
+			<td>Introduction to Object-Oriented Programming<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Mar-2015
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA3</td>
+			<td>Information Systems and Software Engineering II<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Jun-2015
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIETA9</td>
+			<td>Introduction to WWW Techniques<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Jun-2015
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA10</td>
+			<td>Programming Technique C<br> 
+					<span style="font-size: 80%"> Additional information: 
+							
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Aug-2015
+	
+
+						 
+							TaY, avoin - University of Tampere, Open Univ.
+						 
+							                                                            
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-Aug-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIETA11</td>
+			<td>Programming Technique C++<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		10-Jan-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA6</td>
+			<td>Data Structures<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		14-Jan-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEA1</td>
+			<td>Introduction to User Interfaces<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		04-May-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA7</td>
+			<td>Database Programming<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		13-May-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEA6</td>
+			<td>BACHELOR'S THESIS, WRITTEN EXAM<br> 
+					<span style="font-size: 80%"> Additional information:   
+							Kielentark. K. Pitkänen
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						0
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Apr-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETA12</td>
+			<td>WWW Programming<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		21-Apr-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEA5</td>
+			<td>Thesis Course<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-May-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA6</td>
+			<td>Bachelor's Thesis<br> 
+					<span style="font-size: 80%"> Additional information:   
+							Satunnaismetsä
+						
+					</span>
+				</td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-May-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIEVA31</td>
+			<td>Principles of Programming Graphical User Interfaces<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		30-Aug-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIEA4</td>
+			<td>Project Work<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		08-Feb-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr>
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>LUOO001</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							Language and Communication Studies
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>15</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKENLUK</td>
+			<td>Introduction to Academic English<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						4
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		3  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Dec-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>KKRULUKK</td>
+			<td>Swedish Written Communication<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						2
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKRULUKS</td>
+			<td>Swedish Oral Communication<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						2
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		TY 
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>KKSULUK</td>
+			<td>Academic Writing in Finnish<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						3
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>KKSUPRO</td>
+			<td>Introduction to Interpersonal Communication Skills<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						2
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		09-Oct-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>KKENVAL4</td>
+			<td>Dialogue: Constructive Talk at Work<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						2
+					
+				</td>
+
+			<td style="text-align: center">K
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		01-Nov-2017
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr style="background-color:#eee">
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>MTTTKO</b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						
+							Mathematical Studies for students of Computer Sciences
+						 
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>30</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>O</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr>
+			<td>MTTMY1</td>
+			<td>Basic concepts of Mathematics<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">Y
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		22-Oct-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTP1</td>
+			<td>Introduction to statistics<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		27-Oct-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>MTTTP5</td>
+			<td>Basics of Statistical Inference<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Dec-2015
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTTA1</td>
+			<td>Basics of statistical methods<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">A
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		03-May-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>MTTMP2</td>
+			<td>Introduction to mathematical reasoning<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		02-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>MTTMP4</td>
+			<td>Algebra 1A<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		12-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+			<tr>
+				
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b></b>
+				</td>
+				<td style="border-bottom: 1px solid #aaa; padding-top: 0.5em"><b>
+						 
+							Completed courses, not attached to any studies
+						
+					</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>0</b>
+				</td>
+				<td style="text-align: center; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b></b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+	
+	-
+	
+</b>
+				</td>
+				<td style="text-align: right; border-bottom: 1px solid #aaa; padding-top: 0.5em">
+					<b>
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		
+	
+</b>
+				</td>
+				
+			</tr>
+			
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS32</td>
+			<td>XML retrieval and query languages<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		18-May-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>MTTMP1A</td>
+			<td>Introduction to Analysis<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">P
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		16-Dec-2016
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS31</td>
+			<td>Knowledge Discovery<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						10
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		05-Feb-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIETS44</td>
+			<td>Big Data Entity Resolution<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		5  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Mar-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS11</td>
+			<td>Data Mining<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		2  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		23-Mar-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIETS39</td>
+			<td>Machine Learning Algorithms<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		19-Apr-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TUTKLUK</td>
+			<td>Bachelor of Science   <br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						180
+					
+				</td>
+
+			<td style="text-align: center">O
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+		
+			
+			PASS
+		
+	
+	
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		25-Apr-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr>
+			<td>TIETS02</td>
+			<td>Automata I<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		1  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		28-Jun-2018
+	
+</td>
+		</tr>
+	
+		
+		
+		
+		
+		<tr style="background-color:#eee">
+			<td>TIETS17</td>
+			<td>Requirements Engineering<br> </td>
+
+			<td style="text-align: right; white-space: nowrap">
+					
+					
+						5
+					
+				</td>
+
+			<td style="text-align: center">S
+			</td>
+
+			<td style="text-align: right">
+
+
+
+
+
+
+
+	
+	
+	
+		4  
+	
+
+			</td>
+			<td style="text-align: right">
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+	
+	
+		15-Nov-2018
+	
+</td>
+		</tr>
+	
+</tbody></table>
+
+	</div>
+</div>
+		</div>
+
+		
+		
+		
+		<div id="layout_navi">
+			
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="layout_navi_userinfo">
+	<b>
+	<br>
+
+	</b>
+</div>
+<div id="layout_navi_content">
+	<ul>
+		<li><a id="layout_navi_content_home" href="https://www10.uta.fi/nettiopsu/etusivu.htm">Front page</a></li>
+		<li><a id="layout_navi_content_user" href="https://www10.uta.fi/nettiopsu/omattiedot.htm">Personal Data</a></li>
+	</ul>
+	<ul style="padding-top:0.5em">
+	
+	
+	
+		<li><a href="https://www10.uta.fi/nettiopsu/suoritukset.htm">Academic Transcript</a></li>
+		<li><a href="https://www10.uta.fi/nettiopsu/kurssi/laitoslista.htm">Courses</a></li>
+		<li><a href="https://www10.uta.fi/nettiopsu/tentti/tentti.htm">Exams</a></li>
+		<li><a href="https://www10.uta.fi/nettiopsu/vaihdot/vaihdot.htm">International Exchanges</a></li>
+		<li><a href="https://www10.uta.fi/nettiopsu/lomakkeet.htm">Graduation</a></li>
+		
+	
+	
+	</ul>
+</div>
+
+		</div>
+		
+
+		
+		
+		
+		<div id="layout_links">
+			
+
+
+
+
+
+
+
+
+
+<div id="layout_links_info">
+	Other services related to studies
+</div>
+
+<div id="layout_links_content" style="padding-bottom:0.2em">
+	<ul>
+	
+		
+		
+		
+			<li>
+				<a target="_blank" href="http://studentsdesktop.uta.fi/" class="external_link">Student's Desktop</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://learning2.uta.fi/?lang=en" class="external_link">Moodle learning environment</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://tenttis.uta.fi/login/index.php?lang=en_utf8" class="external_link">Electronic Exam Service</a>
+			</li>
+			<li>
+				<a href="https://intrawww.uta.fi/wentti/index-en.html" target="_blank" class="external_link">Exam Results</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://www10.uta.fi/nettikatti/index.htm?uiLang=en" class="external_link">NettiKatti</a>
+			</li>
+		
+	
+	</ul>
+	<div style="font-size:7pt;padding:0.6em 0 0 0">
+		(opens in a new window)
+	</div>
+</div>
+		</div>
+		
+
+	</div>
+</div>
+
+<div id="layout_bottom">
+	<div id="layout_footer">
+		
+
+
+
+
+
+
+
+
+
+<div style="float:right">
+	Information about NettiOpsu and feedback: <a href="mailto:opiskeluwww@uta.fi">opiskeluwww@uta.fi</a> | <a href="https://www2.uta.fi/opiskelunopas/en/essential-information/electronic-services-and-web-tools-students/register-specifications" target="_blank">Register specification</a>
+</div>
+<div>
+	Copyright © 2009–2018 University of Tampere
+</div>
+	</div>
+</div>
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" style="display: none; position: absolute;" tabindex="-1" role="dialog" aria-describedby="sessionTimeoutNotificationDialog" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-1" class="ui-dialog-title">&nbsp;</span><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button></div><div style="" id="sessionTimeoutNotificationDialog" class="ui-dialog-content ui-widget-content">
+    Your session has timed out. Please, log in again.
+</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">OK</span></button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div></body></html>
