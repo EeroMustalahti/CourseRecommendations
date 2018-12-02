@@ -27,18 +27,24 @@ class Preserver:
         self.save(self.student_file, student_data)
         self.reporter.student_saved(self.student_file)
 
-    def save_recommendations(self, recommendations_data):
+    def save_recommendations(self, recommendations_data, student_courses, student_faculty):
         with open(self.recommendations_file, 'w') as f:
+            f.write('{0} student with this study record:\n\n'.format(student_faculty))
+            for key, value in student_courses.items():
+                completed_course = '           {0:>10} : {1:<4} ECTS\n'.format(key, value['ects'])
+                f.write(completed_course)
+
+            f.write('\nRecommendations for the student:\n\n')
             for key, value in recommendations_data.items():
-                id_     = '                        ID : {0}'.format(key)
-                name    = '                      Name : {0}'.format(value['name'])
-                ects    = '                      ECTS : {0}'.format(value['ects'])
-                modules = '        Belongs to modules :'
+                id_     = '                   ID : {0}'.format(key)
+                name    = '                 Name : {0}'.format(value['name'])
+                ects    = '                 ECTS : {0}'.format(value['ects'])
+                modules = '   Belongs to modules :'
                 for module_ in value['belongs_to_modules']:
                     modules += ' {0}'.format(module_)
-                faculty = '                   Faculty : {0}'.format(value['faculty'])
-                score   = '      Recommendation score : {0}'.format(value['score'])
-                reason  = 'Reason to take this course : {0}'.format(value['reason'])
+                faculty = '              Faculty : {0}'.format(value['faculty'])
+                score   = ' Recommendation score : {0}'.format(value['score'])
+                reason  = 'Reason to take course : {0}'.format(value['reason'])
                 f.write(id_ + '\n')
                 f.write(name + '\n')
                 f.write(ects + '\n')

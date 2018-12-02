@@ -3,7 +3,7 @@
 class CommandReader:
 
     scrape_data = False
-    student_data = 'f3'
+    student_data = 'f5'
     student_faculty = 'Faculty of Natural Sciences'
     execute_recommendation = False
 
@@ -16,7 +16,9 @@ class CommandReader:
                         "(y = yes, " \
                         "f1 = no, use fake student 1, " \
                         "f2 = no, use fake student 2, " \
-                        "other = no, use fake student 3): "
+                        "f3 = no, use fake student 3, " \
+                        "f4 = no, use fake student 4, " \
+                        "other = no, use fake student 5): "
     student_faculty_text = "What is the student's faculty? " \
                            "(coms = Faculty of Communication Sciences, " \
                            "edu = Faculty of Education, " \
@@ -59,7 +61,7 @@ class CommandReader:
         self.logging_amount_to_file_input_convert(argv[6])
 
     def get_input_from_keyboard(self):
-        print('Course recommender system')
+        print('Course recommender system (Eero Mustalahti & Daniel Sell)')
         scrape_data = input(self.scrape_data_text) or None
         self.scrape_data_input_convert(scrape_data)
 
@@ -83,65 +85,71 @@ class CommandReader:
     def scrape_data_input_convert(self, value):
         if value == 'y':
             self.scrape_data = True
-            print('Yes')
+            print('=> Yes')
         else:
-            print('No')
+            print('=> No')
 
     def student_data_input_convert(self, value):
         if value == 'y':
             self.student_data = 'y'
-            print('Yes')
+            print('=> Yes')
         elif value == 'f1':
             self.student_data = 'f1'
-            print('Fake student 1')
+            print('=> Fake student 1')
         elif value == 'f2':
             self.student_data = 'f2'
-            print('Fake student 2')
+            print('=> Fake student 2')
+        elif value == 'f3':
+            self.student_data = 'f3'
+            print('=> Fake student 3')
+        elif value == 'f4':
+            self.student_data = 'f4'
+            print('=> Fake student 4')
         else:
-            print('Fake student 3')
+            print('=> Fake student 5')
 
     def student_faculty_input_convert(self, value):
         if value == 'coms':
             self.student_faculty = 'Faculty of Communication Sciences'
-            print('Faculty of Communication Sciences')
+            print('=> Faculty of Communication Sciences')
         elif value == 'edu':
             self.student_faculty = 'Faculty of Education'
-            print('Faculty of Education')
+            print('=> Faculty of Education')
         elif value == 'jkk':
             self.student_faculty = 'Faculty of Management'
-            print('Faculty of Management')
+            print('=> Faculty of Management')
         elif value == 'med':
             self.student_faculty = 'Faculty of Medicine and Life Sciences'
-            print('Faculty of Medicine and Life Sciences')
+            print('=> Faculty of Medicine and Life Sciences')
         elif value == 'soc':
             self.student_faculty = 'Faculty of Social Sciences'
-            print('Faculty of Social Sciences')
+            print('=> Faculty of Social Sciences')
         else:
-            print('Faculty of Natural Sciences')
+            print('=> Faculty of Natural Sciences')
 
     def execute_recommendation_input_convert(self, value):
         if value == 'y':
             self.execute_recommendation = True
-            print('Yes')
+            print('=> Yes')
         else:
-            print('No')
+            print('=> No')
 
     def logging_amount_input_convert(self, value):
         if value == 'f':
             self.logging_amount = 'f'
-            print('Full')
+            print('=> Full')
         elif value == 'm':
             self.logging_amount = 'm'
-            print('Minimum')
+            print('=> Minimum')
         else:
-            print('Intermediate')
+            print('=> Intermediate')
 
     def logging_amount_to_file_input_convert(self, value):
         if value == 'i':
             self.logging_amount_to_file = 'i'
-            print('Intermediate')
+            print('=> Intermediate')
         elif value == 'm':
             self.logging_amount_to_file = 'm'
-            print('Minimum')
+            print('=> Minimum')
         else:
-            print('Full')
+            print('=> Full')

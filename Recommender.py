@@ -2,18 +2,17 @@ import sys
 import time
 import copy
 import pprint
+from collections import OrderedDict
 
 
 class Recommender:
 
-    courses_data = {}
-    modules_data = {}
-    student_data = {}
-    student_faculty = None
-
     fake_students_data = {
+        # Later add more complex / other special case student
+        # (e.g. student having completed course where no ECTS are given?
+        # Two courses in same module but other gaining higher score because it is in other more completed module?)
         'f1': {
-            'faculty': 'Faculty of Natural Sciences',
+            'faculty': 'Faculty of Communication Sciences',
             'TIETS05': {
                 'ects': 5
             },
@@ -21,6 +20,8 @@ class Recommender:
                 'ects': 5
             },
         },
+        # Starting LUO Bachelor of Sciences student having completed two basic courses.
+        # Completed courses / Number of module's courses + Bonus for important module?
         'f2': {
             'faculty': 'Faculty of Natural Sciences',
             'TIEP1': {
@@ -30,7 +31,28 @@ class Recommender:
                 'ects': 5
             },
         },
+        # COMS student completed course in module where no ECTS amount is specified.
+        # Use upper module's ECTS to determine scoring for module's courses because total ects > ancestor's ects
         'f3': {
+            'faculty': 'Faculty of Social Sciences',
+            'MTTTS20': {
+                'ects': 5
+            },
+            'TIETA17': {
+                'ects': 5
+            },
+        },
+        # COMS student completed LUO course in module where total collectable ECTS exceed module's ECTS amount.
+        # Completed ECTS / Module's ECTS scoring.
+        'f4': {
+            'faculty': 'Faculty of Social Sciences',
+            'TIEH0': {
+                'ects': 10
+            },
+        },
+        # COMS student completed very first course listed in their faculty website.
+        # Completed courses / Number of module's courses scoring + Bonus for own faculty.
+        'f5': {
             'faculty': 'Faculty of Communication Sciences',
             'ENGS1': {
                 'ects': 5
@@ -38,8 +60,15 @@ class Recommender:
         },
     }
 
+    courses_data = {}
+    modules_data = {}
+    student_data = {}
+    student_faculty = None
+
+    reason_padding = '                        '
+
     # For own faculty scores: halfway between given score and 1? (Add them and divide by 2)
-    important_module_course = 'important'
+    important_module_course = 'important'  # Score mark for courses in module with Basic/Compulsory keyword?
 
     student_modules = {}
     # Might have to be orderable like list / []?
@@ -58,14 +87,34 @@ class Recommender:
 
         # Find out all modules where the student has completed some courses
         for key, value in self.student_data.items():
-            for study_module in self.courses_data[key]['belongs_to_modules']:
-                self.student_modules[study_module] = self.copy_dict(self.modules_data[study_module])
+            if key in self.courses_data:
+                # Ignore student's completed course if it is not in scraped course data
+                for study_module in self.courses_data[key]['belongs_to_modules']:
+                    if study_module in self.modules_data:
+                        # Ignore modules which have not been collected (e.g. Summer School 2018)
+                        self.student_modules[study_module] = self.copy_dict(self.modules_data[study_module])
+
+        # Procedure when student module does not have ECTS:
+        # Check if parent module has ECTS. If not then check its parent module for ECTS.
+        # Recursively until module with ECTS is found.
+        # Take the upper module's ECTS. Then for each sub-module in it calculate
+        # total_collectable_ects and completed_ects.
+        # If total_colletable_ects > upper module's ECTS then recommend module's courses by
+        # completed_ects / upper module's ECTS. Else normal course count for the None ECTS module only.
 
         # For each student's module take courses not completed &
         # mark how much credits have been completed and num of completed courses &
         # count total amount of ECTS if all courses would be completed (for completed course add completed ECTS)
         for module_id, module_info in self.student_modules.items():
+
+            #if module_id == 14948:
+                #print('Nyt 14948')
+
             for course_id in module_info['courses']:
+
+                #if module_id == '14948':
+                    #print('Moduulin kurssi ' + course_id + self.courses_data[course_id][])
+
                 if course_id not in self.student_data:
                     # If not completed course recommendation will be made
                     self.recommended_courses[course_id] = self.copy_dict(self.courses_data[course_id])
@@ -77,25 +126,46 @@ class Recommender:
                     self.increment_number_of_completed_courses(module_id)
             self.student_modules[module_id]['number_of_courses'] = len(self.student_modules[module_id]['courses'])
 
-        pprint.pprint(self.student_modules)
-        print('####################')
-        pprint.pprint(self.recommended_courses)
-        print('*********************')
+            # Check if module has no ECTS
+            if module_info['ects'] is None:
+                ancestor_with_ects = self.find_ancestor_module_with_ects(module_info['parent'])
+                if ancestor_with_ects is None:
+                    # If no ancestor with ECTS then use course amount complementation
+                    module_info['ects'] = 'No ECTS ancestor'
+                    continue
+                module_info['ancestor_with_ects'] = ancestor_with_ects  # Mark the ancestor with ECTS
+                module_info['ects'] = self.modules_data[ancestor_with_ects]['ects']  # Take ancestor's ects as "module's ects"
+                # Find all ancestor's sub-modules except this module
+                ancestor_and_submodules_except_this = self.find_ancestor_submodules_except_this(
+                    ancestor_with_ects, module_id)
+                # For each submodule add their completed ECTS and total collectable ECTS to this module's
+                for submodule_id in ancestor_and_submodules_except_this:
+                    submodule_info = self.modules_data[submodule_id]
+                    for course_id in submodule_info['courses']:
+                        if course_id not in self.student_data:
+                            self.add_credits_to_total_collectable_ects(module_id, self.courses_data[course_id]['ects'])
+                        else:
+                            self.add_student_course_credits(course_id, module_id)
+                            self.add_credits_to_total_collectable_ects(module_id, self.student_data[course_id]['ects'])
 
-        # WARNING missing method to calculate score when module has None ECTS
+        #pprint.pprint(self.student_modules)
+        #print('####################')
+        #pprint.pprint(self.recommended_courses)
+        #print('*********************')
 
         for module_id, module_info in self.student_modules.items():
+            #print(module_id + module_info['name'])
             completed_ects = module_info['completed_ects']
             ects = module_info['ects']
             total_collectable_ects = module_info['total_collectable_ects']
             completed_courses = module_info['completed_courses']
             number_of_courses = module_info['number_of_courses']
 
-            if completed_ects >= ects or completed_courses == number_of_courses:
+            if (isinstance(ects, int) and completed_ects >= ects) or completed_courses == number_of_courses:
                 # If completed credits equal or exceed module's ECTS OR all courses are completed then ignore the module
                 continue
             # Choose scoring method. Choose credit if total collectable credit count exceeds module's own ects amount
-            if total_collectable_ects > ects:
+            if isinstance(ects, int) and total_collectable_ects > ects:
                 # Score for all non-completed courses: completed_ects / module's ects
                 score = completed_ects / ects
                 for course_id in module_info['courses']:
@@ -109,14 +179,55 @@ class Recommender:
                         if course_id in self.recommended_courses:
                             self.try_to_assign_score_to_course(course_id, score, module_id, module_info, 'course_amount')
 
+        # Remove those courses which did not get score assigned to them due to module being already full
+        no_unscored = {}
+        for recommended_id, recommended_info in self.recommended_courses.items():
+            if 'score' in recommended_info:
+                no_unscored.update({recommended_id: recommended_info})
+        self.recommended_courses = no_unscored
+
         # Do necessary score raising for courses belonging to student's faculty
         for recommended_id, recommended_info in self.recommended_courses.items():
+            print(recommended_id + ' ' + recommended_info['name'])
             if recommended_info['faculty'] == self.student_faculty:
                 recommended_info['score'] = (1 + recommended_info['score']) / 2
                 recommended_info['reason'] += ' The course belongs to your faculty!'
 
-        pprint.pprint(self.recommended_courses)
-        self.preserver.save_recommendations(self.recommended_courses)
+        # Make sorted dict from highest score course to lowest score course
+        od = OrderedDict(sorted(self.recommended_courses.items(), key=lambda x: x[1]['score'], reverse=True))
+        # Save ordered recommended courses
+        self.preserver.save_recommendations(od, self.student_data, self.student_faculty)
+
+    # Helper methods
+
+    def find_ancestor_submodules_except_this(self, ancestor_with_ects, module_id):
+        some_modules = [ancestor_with_ects]
+        submodules_except_this = self.traverse_submodules([], some_modules, module_id)
+
+        return submodules_except_this
+
+    def traverse_submodules(self, found, some_modules, not_include_module):
+        for some_module in some_modules:
+            if some_module != not_include_module:
+                found.append(some_module)
+            self.traverse_submodules(found, self.find_childs(some_module), not_include_module)
+        return found
+
+    def find_childs(self, module_):
+        childs = []
+        for key, value in self.modules_data.items():
+            if 'parent' in value and value['parent'] == module_:
+                childs.append(key)
+        return childs
+
+    def find_ancestor_module_with_ects(self, module_id):
+        #print(module_id)
+        if module_id is None:
+            # If no ancestor module could be found where ECTS is specified
+            return None
+        if self.modules_data[module_id]['ects'] is not None:
+            return module_id
+        return self.find_ancestor_module_with_ects(self.modules_data[module_id]['parent'])
 
     def try_to_assign_score_to_course(self, course_id, score, module_id, module_info, scoring_method):
         # If score not yet given then give it.
@@ -127,24 +238,42 @@ class Recommender:
             self.recommended_courses[course_id]['score'] = score
             # Mark the reason why the course is given that point (brings closer to complete some module)
             if scoring_method == 'ects':
-                reason = 'Completed {0} ECTS out of {1} ECTS in study module {2} {3}. Only {4} ECTS left!'
-                reason = reason.format(module_info['completed_ects'], module_info['ects'], module_id,
-                                       module_info['name'], module_info['ects'] - module_info['completed_ects'])
+                reason = ''
+                if 'ancestor_with_ects' in module_info:
+                    reason = 'Course of module {2} {3}\n' + self.reason_padding +\
+                             'Completed {0} ECTS out of {1} ECTS in study module\n' + self.reason_padding + \
+                             '{5} {6} and it\'s sub-modules.\n' + self.reason_padding + 'Only {4} ECTS left!'
+                    reason = reason.format(module_info['completed_ects'], module_info['ects'], module_id,
+                                           module_info['name'], module_info['ects'] - module_info['completed_ects'],
+                                           module_info['ancestor_with_ects'],
+                                           self.modules_data[module_info['ancestor_with_ects']]['name'])
+                else:
+                    reason = 'Completed {0} ECTS out of {1} ECTS in study module\n' + self.reason_padding +\
+                             '{2} {3}.\n' + self.reason_padding + 'Only {4} ECTS left!'
+                    reason = reason.format(module_info['completed_ects'], module_info['ects'], module_id,
+                                           module_info['name'], module_info['ects'] - module_info['completed_ects'])
                 self.recommended_courses[course_id]['reason'] = reason
             else:
-                reason = 'Completed {0} courses out of {1} courses in study module {2} {3}. Only {4} courses left!'
+                reason = 'Completed {0} courses out of {1} courses in study module\n' + self.reason_padding +\
+                         '{2} {3}.\n' + self.reason_padding + 'Only {4} courses left!'
                 reason = reason.format(module_info['completed_courses'], module_info['number_of_courses'], module_id,
                                        module_info['name'],
                                        module_info['number_of_courses'] - module_info['completed_courses'])
                 self.recommended_courses[course_id]['reason'] = reason
 
     def add_student_course_credits(self, course_id, module_id):
+        if self.student_data[course_id]['ects'] is None:
+            # If student did not get any ECTS from course ignore it
+            return
         if 'completed_ects' in self.student_modules[module_id]:
             self.student_modules[module_id]['completed_ects'] += self.student_data[course_id]['ects']
         else:
             self.student_modules[module_id]['completed_ects'] = self.student_data[course_id]['ects']
 
     def add_credits_to_total_collectable_ects(self, module_id, addable_credits):
+        if addable_credits is None:
+            # Ignore courses where no credits can be obtained
+            return
         if 'total_collectable_ects' in self.student_modules[module_id]:
             self.student_modules[module_id]['total_collectable_ects'] += addable_credits
         else:
