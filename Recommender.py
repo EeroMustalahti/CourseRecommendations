@@ -1,16 +1,11 @@
-import sys
-import time
 import copy
-import pprint
+
 from collections import OrderedDict
 
 
 class Recommender:
 
     fake_students_data = {
-        # Later add more complex / other special case student
-        # (e.g. student having completed course where no ECTS are given?
-        # Two courses in same module but other gaining higher score because it is in other more completed module?)
         'f1': {
             'faculty': 'Faculty of Communication Sciences',
             'TIETS05': {
@@ -21,7 +16,7 @@ class Recommender:
             },
         },
         # Starting LUO Bachelor of Sciences student having completed two basic courses.
-        # Completed courses / Number of module's courses + Bonus for important module?
+        # Should use Completed courses / Number of module's courses + Bonus for own faculty courses
         'f2': {
             'faculty': 'Faculty of Natural Sciences',
             'TIEP1': {
@@ -32,7 +27,7 @@ class Recommender:
             },
         },
         # COMS student completed course in module where no ECTS amount is specified.
-        # Use upper module's ECTS to determine scoring for module's courses because total ects > ancestor's ects
+        # Should use upper module's ECTS to determine scoring for module's courses because total ects > ancestor's ects
         'f3': {
             'faculty': 'Faculty of Social Sciences',
             'MTTTS20': {
@@ -43,7 +38,7 @@ class Recommender:
             },
         },
         # COMS student completed LUO course in module where total collectable ECTS exceed module's ECTS amount.
-        # Completed ECTS / Module's ECTS scoring.
+        # Should use Completed ECTS / Module's ECTS scoring.
         'f4': {
             'faculty': 'Faculty of Social Sciences',
             'TIEH0': {
@@ -51,7 +46,7 @@ class Recommender:
             },
         },
         # COMS student completed very first course listed in their faculty website.
-        # Completed courses / Number of module's courses scoring + Bonus for own faculty.
+        # Should use Completed courses / Number of module's courses scoring + Bonus for own faculty.
         'f5': {
             'faculty': 'Faculty of Communication Sciences',
             'ENGS1': {
@@ -60,32 +55,33 @@ class Recommender:
         },
     }
 
-    courses_data = {}
-    modules_data = {}
-    student_data = {}
-    student_faculty = None
+    courses_data = {}  # Dataset of courses
+    modules_data = {}  # Dataset of modules
+    student_data = {}  # Completed courses by the student
+    student_faculty = None  # Faculty where the student belongs to
+
+    student_modules = {}  # Modules where the student has completed at least one course
+
+    recommended_courses = {}  # Courses recommended for the student
 
     reason_padding = '                        '
-
-    # For own faculty scores: halfway between given score and 1? (Add them and divide by 2)
-    important_module_course = 'important'  # Score mark for courses in module with Basic/Compulsory keyword?
-
-    student_modules = {}
-    # Might have to be orderable like list / []?
-    recommended_courses = {}
 
     def __init__(self, data_preserver, status_reporter):
         self.preserver = data_preserver
         self.reporter = status_reporter
 
     def recommend(self, real_student):
-        """Recommends set of courses to student."""
+        """
+        Recommend set of courses to student and saves the recommended courses to file
+        :param real_student: Whether we are producing recommendations for real student or not
+        """
 
         self.load_course_and_module_data()
         if real_student:
+            # Load real student's study record from file
             self.load_student_data()
 
-        # Find out all modules where the student has completed some courses
+        # Gather a set of modules where the student has completed at least one course in each module
         for key, value in self.student_data.items():
             if key in self.courses_data:
                 # Ignore student's completed course if it is not in scraped course data
@@ -107,23 +103,20 @@ class Recommender:
         # count total amount of ECTS if all courses would be completed (for completed course add completed ECTS)
         for module_id, module_info in self.student_modules.items():
 
-            #if module_id == 14948:
-                #print('Nyt 14948')
-
             for course_id in module_info['courses']:
-
-                #if module_id == '14948':
-                    #print('Moduulin kurssi ' + course_id + self.courses_data[course_id][])
 
                 if course_id not in self.student_data:
                     # If not completed course recommendation will be made
                     self.recommended_courses[course_id] = self.copy_dict(self.courses_data[course_id])
                     self.add_credits_to_total_collectable_ects(module_id, self.courses_data[course_id]['ects'])
                 else:
-                    # If completed add student's ects amount of that course to total completed credits count
+                    # If completed add student's ects amount of that course
+                    # to total completed credits count in that module
                     self.add_student_course_credits(course_id, module_id)
                     self.add_credits_to_total_collectable_ects(module_id, self.student_data[course_id]['ects'])
                     self.increment_number_of_completed_courses(module_id)
+
+            # Mark the number of courses the module has
             self.student_modules[module_id]['number_of_courses'] = len(self.student_modules[module_id]['courses'])
 
             # Check if module has no ECTS
@@ -148,13 +141,9 @@ class Recommender:
                             self.add_student_course_credits(course_id, module_id)
                             self.add_credits_to_total_collectable_ects(module_id, self.student_data[course_id]['ects'])
 
-        #pprint.pprint(self.student_modules)
-        #print('####################')
-        #pprint.pprint(self.recommended_courses)
-        #print('*********************')
-
+        # Calculate scores for courses in student's modules
         for module_id, module_info in self.student_modules.items():
-            #print(module_id + module_info['name'])
+
             completed_ects = module_info['completed_ects']
             ects = module_info['ects']
             total_collectable_ects = module_info['total_collectable_ects']
@@ -164,6 +153,7 @@ class Recommender:
             if (isinstance(ects, int) and completed_ects >= ects) or completed_courses == number_of_courses:
                 # If completed credits equal or exceed module's ECTS OR all courses are completed then ignore the module
                 continue
+
             # Choose scoring method. Choose credit if total collectable credit count exceeds module's own ects amount
             if isinstance(ects, int) and total_collectable_ects > ects:
                 # Score for all non-completed courses: completed_ects / module's ects
@@ -179,14 +169,14 @@ class Recommender:
                         if course_id in self.recommended_courses:
                             self.try_to_assign_score_to_course(course_id, score, module_id, module_info, 'course_amount')
 
-        # Remove those courses which did not get score assigned to them due to module being already full
+        # Remove those courses which did not get score assigned to them due to module being already fully completed
         no_unscored = {}
         for recommended_id, recommended_info in self.recommended_courses.items():
             if 'score' in recommended_info:
                 no_unscored.update({recommended_id: recommended_info})
         self.recommended_courses = no_unscored
 
-        # Do necessary score raising for courses belonging to student's faculty
+        # Add bonus points for courses belonging to student's faculty
         for recommended_id, recommended_info in self.recommended_courses.items():
             print(recommended_id + ' ' + recommended_info['name'])
             if recommended_info['faculty'] == self.student_faculty:
@@ -221,7 +211,9 @@ class Recommender:
         return childs
 
     def find_ancestor_module_with_ects(self, module_id):
-        #print(module_id)
+        """
+        Attempts to find the ID of the ancestor module which has ECTS amount specified
+        """
         if module_id is None:
             # If no ancestor module could be found where ECTS is specified
             return None
@@ -230,6 +222,10 @@ class Recommender:
         return self.find_ancestor_module_with_ects(self.modules_data[module_id]['parent'])
 
     def try_to_assign_score_to_course(self, course_id, score, module_id, module_info, scoring_method):
+        """
+        Attempts to assign score to course. If he score is already given and the existing score is higher
+        than the new value then do not assign new value for the score.
+        """
         # If score not yet given then give it.
         # If score is already given but it is higher then replace.
         if (('score' not in self.recommended_courses[course_id]) or
@@ -288,27 +284,45 @@ class Recommender:
     # Data preserving
 
     def load_course_and_module_data(self):
+        """
+        Loads the courses and modules datasets from files
+        """
         self.courses_data = self.preserver.load_courses()
         self.modules_data = self.preserver.load_modules()
 
     def load_student_data(self):
+        """
+        Loads student data from file
+        """
         self.student_data = self.preserver.load_student()
         self.student_faculty = self.student_data['faculty']
+        # Student's faculty has been memorized.
+        # It can be deleted from dataset of completed courses.
         del self.student_data['faculty']
 
     # Fake student generation
 
     def get_fake_student_completed_courses(self, fake_student_key):
-        """Returns array of courses completed by fake student."""
-
+        """
+        Prepares the Recommender to make recommendations to artificial student
+        :param fake_student_key: The key of the artificial student for who to make recommendations
+        """
         self.student_data = self.fake_students_data[fake_student_key]
         self.student_faculty = self.student_data['faculty']
+        # Student's faculty has been memorized.
+        # It can be deleted from dataset of completed courses.
         del self.student_data['faculty']
 
     # Utility methods
 
     @staticmethod
     def copy_dict(value, key=None):
+        """
+        Copies a dictionary
+        :param value:
+        :param key: Optional key functioning as the key of the copy dict
+        :return: Either only copy of the dict or also a dict having one key with the copied dict as value
+        """
         value_copy = copy.deepcopy(value)
         if key:
             return {key: value_copy}

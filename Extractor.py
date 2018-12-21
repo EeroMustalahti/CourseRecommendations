@@ -1,4 +1,3 @@
-import sys
 import re
 
 from bs4 import BeautifulSoup
@@ -8,39 +7,54 @@ class Extractor:
 
     parser = 'html.parser'
 
-    filter_name = ''
+    filter_name = ''  # Used in custom filter to find anchor element which contains this module's name
 
-    def __init__(self):
-        pass
+    # Methods extracting elements during scraping process to navigate to module and course pages
+    # and extracting data about courses and modules
 
     def get_faculties(self, curricula_content):
+        """
+        Gets faculty names and the division elements containing links to degree programmes and modules of a faculty
+        :param curricula_content: The UTA Curricula Guides main page content
+        :return: Dictionary with faculty name as key and faculty's element containing its links as value
+        """
         curricula_soup = self.get_soup(curricula_content)
 
         faculties = {}
         faculty_divs = curricula_soup.find_all('div', {'class': 'frontpage_unit_content'})
 
         for faculty_div in faculty_divs:
+            # Extract the faculty's name from its link
             faculty_a = faculty_div.parent.find('div', {'class': 'frontpage_header'}).find('a')
             faculty_name = faculty_a.text.rsplit(maxsplit=1)[0].strip()
 
-            # Add only names which have word 'Faculty' in them, they should be "actual" faculties
             if 'Faculty' in faculty_name:
+                # Add only names which have word 'Faculty' in them, they should be "actual" faculties
                 faculties[faculty_name] = faculty_div
 
         return faculties
 
     def get_education_structure(self, page_content):
+        """
+        Get the education structure element
+        :param page_content: Content of the page
+        :return: The education structure element or None if the page does not contain educations structure
+        """
         page_soup = self.get_soup(page_content)
         education_structure = page_soup.find('div', {'class': 'koulutus_rakenne'})
         return education_structure
 
     def get_programme_info(self, programme_content):
+        """
+        Gets the name of the programme and module elements belonging to the programme
+        :param programme_content: The content of the programme page
+        :return: or None if the programme does not have any content
+        """
         programme_soup = self.get_soup(programme_content)
         programme_name = programme_soup.find('h3')
 
-        # Hotfix: sometimes programme has no content. Skip it then
-        # (example: Nuorisotyön ja nuorisotutkimuksen maisteriohjelma 2015-2017)
         if programme_name is None:
+            # Sometimes the programme page does not have any content. Ignore it then.
             return None, None
 
         programme_name = programme_name.text.strip()
@@ -48,42 +62,54 @@ class Extractor:
         module_divs = programme_soup.select('div[class*="tutrak_okokonaisuus"]')
         return programme_name, module_divs
 
-    # Hotfix: get module name to report what module we are entering
     def get_module_name(self, page):
+        """
+        Gets the name of the topmost module we have entered
+        :param page: Content of the page
+        :return: The name of the module
+        """
         soup = self.get_soup(page)
         return soup.select_one('h3').text.strip()
 
-    # Hotfix: find out is current page Degree Programme where modules are listed
-    # (NOTE): Programme pages are not landing pages
-    def check_if_programme_page(self, page_content):
-        page_soup = self.get_soup(page_content)
-        module_div = page_soup.select_one('div[class*="tutrak_okokonaisuus"]')
-        if module_div:
-            return True
-        return False
-
-    # Hotfix: is current page module page. Checking root should be enough (checks for e.g. collection already made)
-    def get_root_element(self, page_content):
+    def get_root_element_containing_module_elements(self, page_content):
+        """
+        Get root element which contains module elements
+        :param page_content: The content of the page
+        :return: The root element or None if the page does not contain the root element
+        """
         page_soup = self.get_soup(page_content)
         return page_soup.select_one('div[class="tutrak_elem_current_root"]')
 
-    # Hotfix: filter to get right link from bread crumbds
     def has_name(self, tag):
+        """
+        Custom filter for testing whether the tag is the one we are looking for
+        :param tag: The tag which is tested whether it is anchor element and contains the module's name in its text
+        :return: Whether the tag is the one we are looking for
+        """
         return tag.name == 'a' and self.filter_name in tag.text
 
-    # Hotfix: module data getter for case when page has only single module info. Gets the module data of upmost module
     def get_module_data_differently(self, module_page):
+        """
+        Extract module data in specialized way. This data extraction method is done to modules which are
+        topmost modules in module pages where we land when entering a link inside the faculty
+        :param module_page: The content of the module page
+        :return: ID, name, credits, list of course IDs the module contains, parent module and links
+        to the pages of the courses the module contains.
+        """
         module_soup = self.get_soup(module_page)
 
-        name = module_soup.select_one('h3').text.strip()
+        name = module_soup.select_one('h3').text.strip()  # This module's name mus be extracted from header
 
-        self.filter_name = name  #Hotfix
+        self.filter_name = name
+        # The ID of the module must be extracted from a breadcrumb link.
+        # Custom filer is needed to get the right breadcrumb link.
         href_where_id = module_soup.select_one('div[id="murupolku"]').find(self.has_name).get('href')
         id_ = re.search('rid=(.+?)&', href_where_id).group(1)
 
-        # Hotfix: take only note of right side of ',' (some modules have year span included in them)
+        # Take only note of right side of ','
+        # (some modules have year span included in them. Do not include that in the name)
         header_parts = module_soup.find('div', {'class': "department_header"}).text.rsplit(',', maxsplit=1)
-        ects = None  # Not all courses have specified ECTS
+        ects = None  # Not all modules have specified ECTS
         if len(header_parts) > 1:
             ects_text = header_parts[1]
             ects_text = ''.join(c for c in ects_text if (c.isdigit() or c == '–'))
@@ -102,12 +128,18 @@ class Extractor:
                 course_ids.append(course_div.select_one('a').previous_sibling.strip())
                 course_links.append(course_div.select_one('a').get('href'))
 
-        parent_module_id = None
+        parent_module_id = None  # The topmost module cannot have a parent
 
         return id_, name, ects, course_ids, parent_module_id, course_links
 
     @staticmethod
     def get_module_data(module_div):
+        """
+        Extracts module's data
+        :param module_div: The element from which to collect the module's data
+        :return: ID, name, credits, list of course IDs the module contains, parent module and links
+        to the pages of the courses the module contains.
+        """
         id_ = module_div['id'].split('_')[1].strip()
         name = module_div.select_one('a').text.strip()
 
@@ -137,12 +169,16 @@ class Extractor:
         return id_, name, ects, course_ids, parent_module_id, course_links
 
     def get_course_data(self, course_content):
+        """
+        Extracts course data
+        :param course_content: The course page containing course info
+        :return: ID, name, credits, list of IDs of the modules where this course belongs
+        """
         course_soup = self.get_soup(course_content)
         header_div = course_soup.find('div', {'class': 'department_header'})
 
-        # Some course pages no not work, their data cannot be collected (example: KKRUTEK)
-        # Hotfix
         if header_div is None:
+            # Some course pages no not work, their data cannot be collected
             return None, None, None, None
 
         header_strings = header_div.text.split(maxsplit=1)
@@ -171,16 +207,15 @@ class Extractor:
 
         return id_, name, ects, module_ids
 
-    @staticmethod
-    def get_links(element):
-        links = []
-        for anchor in element.find_all('a'):
-            links.append(anchor.get('href'))
-        return links
-
-    # Methods extracting data about student
+    # Method extracting data about student
 
     def get_completed_courses(self, page):
+        """
+
+        :param page:
+        :return: Dictionary with course ID as key and a dictionary value with
+        ects as key and obtained credit amount by the student as value
+        """
         soup = self.get_soup(page)
         rows = soup.select_one('div[id="suortapa1_content"]').select('tr')
 
@@ -194,34 +229,24 @@ class Extractor:
 
         return student_courses
 
-    def get_hidden_fields(self, page):
-        soup = self.get_soup(page)
-
-        warn_input = soup.select_one('input[name="warn"]')
-        warn = warn_input.get('value')
-
-        lt_input = soup.select_one('input[name="lt"]')
-        lt = lt_input.get('value')
-
-        exe_input = soup.select_one('input[name="execution"]')
-        exe = exe_input.get('value')
-
-        _eventId_input = soup.select_one('input[name="_eventId"]')
-        _eventId = _eventId_input.get('value')
-
-        submit_input = soup.select_one('input[name="submit"]')
-        submit = submit_input.get('value')
-
-        reset_input = soup.select_one('input[name="reset"]')
-        reset = reset_input.get('value')
-
-        return warn, lt, exe, _eventId, submit, reset
-
-    def get_student_faculty(self, page_content):
-        page_soup = self.get_soup(page_content)
-        print(page_soup.select_one('h2').text)
-
     # Utility methods
 
+    @staticmethod
+    def get_links(element):
+        """
+        Gets links inside the HTML element
+        :param element: The element from which the links are extracted
+        :return: List of links
+        """
+        links = []
+        for anchor in element.find_all('a'):
+            links.append(anchor.get('href'))
+        return links
+
     def get_soup(self, page_content):
+        """
+        Converts HTML content to a "soup" form which can be used to navigate the content
+        :param page_content: HTML content of a web page
+        :return: navigateable form of the HTML content
+        """
         return BeautifulSoup(page_content, self.parser)

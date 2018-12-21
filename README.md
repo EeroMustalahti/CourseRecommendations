@@ -1,3 +1,2 @@
 # CourseRecommendations
-Application for recommending university courses for students based on passed courses.
-//testing
+Program for recommending university courses for students based on passed courses.
